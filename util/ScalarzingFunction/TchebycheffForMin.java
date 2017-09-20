@@ -1,11 +1,10 @@
 package util.ScalarzingFunction;
 
-import core.Solution;
 import util.JMException;
 
 public class TchebycheffForMin  extends ScalarzingFunction{
 
-	public double execute(Solution ind,double[] weight,double[] referencePoint) throws JMException{
+	public double execute(double[] ind,double[] weight,double[] referencePoint) throws JMException{
 		double max=-1;
 		double fnvue;
 		double[] weigh = new double[weight.length];
@@ -18,9 +17,9 @@ public class TchebycheffForMin  extends ScalarzingFunction{
 			}
 		}
 
-		max = weigh[0]*Math.abs( referencePoint[0] - ind.getObjective(0));
+		max = weigh[0]*Math.abs( referencePoint[0] - ind[0]);
 		for(int i=0;i<weight.length;i++){
-			fnvue = weigh[i]*Math.abs(referencePoint[i] - ind.getObjective(i));
+			fnvue = weigh[i]*Math.abs(referencePoint[i] - ind[i]);
 			if(max < fnvue)
 				max = fnvue;
 		}

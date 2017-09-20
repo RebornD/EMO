@@ -1,6 +1,5 @@
 package util.ScalarzingFunction;
 
-import core.Solution;
 import util.JMException;
 
 public class InvertedPBIForMIN extends ScalarzingFunction {
@@ -12,7 +11,7 @@ public class InvertedPBIForMIN extends ScalarzingFunction {
 	}
 
 
-	public double execute(Solution ind ,double[] weigh,double[] referencePoint) throws JMException{
+	public double execute(double[] indd ,double[] weigh,double[] referencePoint) throws JMException{
 		double dt = 0,dn;
 		double scalar_weight=0;
 		double d1_reg=0;
@@ -23,7 +22,7 @@ public class InvertedPBIForMIN extends ScalarzingFunction {
 
 		for(int i=0;i<weight.length;i++){
 			scalar_weight += weight[i]*weight[i];
-			ref_minus_fit[i] = referencePoint[i]  - ind.getObjective(i);
+			ref_minus_fit[i] = referencePoint[i]  - indd[i];
 			dt += ref_minus_fit[i] * weight[i];
 		}
 		scalar_weight = Math.sqrt(scalar_weight);

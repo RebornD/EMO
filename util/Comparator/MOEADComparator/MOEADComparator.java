@@ -27,6 +27,11 @@ public abstract class MOEADComparator extends Comparator {
 
 	protected WeightedVector weightedVector;
 
+	protected double[] Max;
+	protected double[] Min;
+
+	public void setMaxPoint(double[] d){Max = d;};
+	public void setMinPoint(double[] d){Min = d;};
 
 	public ScalarzingFunction getScalarzingFunction(){return ScalaringFunction_;};
 
