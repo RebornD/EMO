@@ -400,5 +400,9 @@ public class Population {
 		}
 	}
 
+	public void pop() {
+		populationSize--;
+	}
+
 
 }

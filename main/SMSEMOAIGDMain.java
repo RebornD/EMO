@@ -39,7 +39,7 @@ public class SMSEMOAIGDMain extends AlgorithmMain{
 		d.put("numberOfObjectives",OBJ);
 		problem = MOPFactory.getMOP(Problemname,d,"SMSEMOAIGD");
 		algorithm = new SMSEMOAIGD(problem);
-		String dddname = problem.getNumberOfObjectives()  + "OBJ" + setting_.getAsInt("Division")+"div";
+		String dddname = problem.getNumberOfObjectives()  + "OBJ";
 		algorithm.setInputParameter("numberOfObjectives",OBJ);
 		algorithm.setInputParameter("populationSize", setting_.getAsInt("populationSize"));
 
@@ -73,10 +73,6 @@ public class SMSEMOAIGDMain extends AlgorithmMain{
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-		algorithm.setInputParameter("numberOfDivision",setting_.getAsInt("Division"));
- 		int innnerWeightDivision =  setting_.getAsInt("InnerWeightDivision");
-		innnerWeightDivision =  setting_.getAsInt("Objectives") >= 6 ? innnerWeightDivision : 0;
-		algorithm.setInputParameter("InnerWeightDivision",innnerWeightDivision);
 
 
 		algorithm.addOperator("crossover", crossover);

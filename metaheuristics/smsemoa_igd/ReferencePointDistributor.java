@@ -26,7 +26,6 @@ public class ReferencePointDistributor {
 		default:
 			assert true : "ReferencePointDisributor key がおかしんだよ" + key;
 		}
-
 		return ret;
 	}
 

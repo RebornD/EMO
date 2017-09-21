@@ -17,8 +17,9 @@ public class Settingpublisher {
 			return SMSEMOAIGDSetting.getSetting(numberOfObj, problemname);
 		}  else if (Algorithmname.equalsIgnoreCase("NSGAIII")){
 			return NSGAIIISetting.getSetting(numberOfObj, problemname);
+		}else if (Algorithmname.equalsIgnoreCase("NormalizeMOEAD")){
+			return NormalizeMOEADSetting.getSetting(numberOfObj, problemname);
 		}
-
 
 
 

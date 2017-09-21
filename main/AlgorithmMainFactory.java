@@ -16,6 +16,8 @@ public class AlgorithmMainFactory {
 			return new NSGAIIIMain(parameters);
 		} else if (name.equalsIgnoreCase("SMSEMOAIGD")){
 			return new SMSEMOAIGDMain(parameters);
+		} else if (name.equalsIgnoreCase("NormalizeMOEAD")){
+			return new NormalizeMOEADMain(parameters);
 		}/*
 		  else if (name.equalsIgnoreCase("SBXCrossover2")){
 			return new SBXCrossover2(parameters);

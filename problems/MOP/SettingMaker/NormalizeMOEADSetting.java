@@ -5,7 +5,7 @@ import java.util.List;
 
 // these settings are for the black box test
 
-public class MOEADSetting {
+public class NormalizeMOEADSetting {
 
 	public static List<Integer> getSetting(int numberOfObj,String name){
 		List<Integer> ret = new ArrayList<Integer>();
@@ -27,11 +27,9 @@ public class MOEADSetting {
 			numberOfVariables_	 = 	numberOfObj + 19;
 		}else if (name.equalsIgnoreCase( "WFG1")){
 			numberOfVariables_	 = 	24;
-
 			k = numberOfObj -1;
 			l = numberOfVariables_ - numberOfObj + 1 ;
 			M = numberOfObj;
-
 		} else if (name.equalsIgnoreCase( "WFG2")){
 			if (numberOfObj <7){
 			numberOfVariables_	 = 	24;

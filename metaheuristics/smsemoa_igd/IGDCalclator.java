@@ -19,19 +19,14 @@ public class IGDCalclator {
 
 
 	public static double calc(Front arg, double[][] igdFile){
-
 		double sum = 0;
-
 		for(int i=0;i<igdFile.length;i++){
 			double min = Double.MAX_VALUE;
-
 			for(int ja = 0;ja <arg.size();ja++){
 				min = Math.min(min, distance(igdFile[i],arg.get(ja).get()));
 			}
-
 			sum += min;
 		}
-
 		return sum/igdFile.length;
 	}
 

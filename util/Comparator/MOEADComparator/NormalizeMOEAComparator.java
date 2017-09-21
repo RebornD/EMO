@@ -25,20 +25,27 @@ public class NormalizeMOEAComparator extends MOEADComparator {
 
 	@Override
 	public int execute(Object one, Object two) throws JMException {
+		Solution solone = (Solution)one;
+		Solution soltwo = (Solution)two;
+		double[] soloneDouble = new double[solone.getNumberOfObjectives()];
+		double[] soltwoDouble = new double[solone.getNumberOfObjectives()];
 
-		double[] solone = ((Solution)one).getObjectives().clone();;
-		double[] soltwo = ((Solution)two).getObjectives().clone();;
-
-
-		for(int obj =0; obj < solone.length;obj++){
-			solone[obj] = (solone[obj] - Min[obj])/(Max[obj] - Min[obj] + epsilon);
-			soltwo[obj] = (solone[obj] - Min[obj])/(Max[obj] - Min[obj] + epsilon);
+		for(int obj =0; obj < solone.getNumberOfObjectives();obj++){
+			soloneDouble[obj] = (solone.getObjective(obj) - Min[obj])/(Max[obj] - Min[obj] + epsilon);
+			soltwoDouble[obj] = (soltwo.getObjective(obj)- Min[obj])/(Max[obj] - Min[obj] + epsilon);
 		}
+		double scalar_one = 0;
+		double scalar_two = 0;
 
-		double scalar_one = ScalaringFunction_.execute(solone, weightedVector.get(), referencePoint.get());
-		double scalar_two = ScalaringFunction_.execute(soltwo, weightedVector.get(), referencePoint.get());
+		scalar_one = ScalaringFunction_.execute(soloneDouble, weightedVector.get(), referencePoint.get());
+//		scalar_one = ScalaringFunction_.execute(solone, weightedVector.get(), referencePoint.get());
 
-		
+		scalar_two = ScalaringFunction_.execute(soltwoDouble, weightedVector.get(), referencePoint.get());
+//		scalar_two = ScalaringFunction_.execute(soltwo, weightedVector.get(), referencePoint.get());
+
+
+		assert scalar_one > 0;
+		assert scalar_two > 0;
 		if (isMAX_== (scalar_one > scalar_two)){
 			return 1;
 		} else if  (isMAX_== (scalar_one < scalar_two)){

@@ -3,7 +3,6 @@ package operators.selection.ParentsSelection;
 import java.util.HashMap;
 
 import core.Population;
-import operators.selection.Selection;
 import util.Random;
 
 
@@ -12,7 +11,7 @@ import util.Random;
  *
  */
 
-public class RandomSelectionWithoutReplacement extends Selection {
+public class RandomSelectionWithoutReplacement extends ParentsSelection {
 	public RandomSelectionWithoutReplacement(HashMap<String, Object> parameters) {
 		super(parameters);
 		// TODO 自動生成されたコンストラクター・スタブ

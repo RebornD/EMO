@@ -8,8 +8,8 @@ import core.Operator;
 import core.Population;
 import core.Problem;
 import core.Solution;
-import operators.selection.ParentsSelection.BinaryTournament;
 import operators.selection.ParentsSelection.ParentsSelection;
+import operators.selection.ParentsSelection.RandomSelectionWithoutReplacement;
 import util.Front;
 import util.JMException;
 import util.POINT;
@@ -119,7 +119,7 @@ public class SMSEMOAIGD extends Algorithm{
 		ranking = new NDSRanking(isMAX_);
 		ranking.setPop(Merge_);
 		ranking.Ranking();
-		
+
 		Population empty = ranking.get(ranking.getworstrank()-1);
 		int number = -1;
 		if(empty.size() == 1){
@@ -187,6 +187,9 @@ public class SMSEMOAIGD extends Algorithm{
 		}
 		ReferencePoint_ = weight;
 		System.out.println(ReferencePoint_.length);
+
+		ReferencePoint_ = FileReading.Reading(numberofObjectives_);
+
 	}
 
 	public void initPopulation() throws JMException, ClassNotFoundException {
@@ -208,11 +211,9 @@ public class SMSEMOAIGD extends Algorithm{
 		Solution   child;
 		Solution[] parents   = new Solution[2];
 
-		int one  = (int) ParentSelection_.execute(population_);
-		int two  = (int) ParentSelection_.execute(population_);
-
-		parents[0] = population_.get(one);
-		parents[1] = population_.get(two);
+		int[] perm  = (int[]) ParentSelection_.execute(population_);
+		parents[0] = population_.get(perm[0]);
+		parents[1] = population_.get(perm[1]);
 
 		child = (Solution) crossover_.execute(parents);
 		mutation_.execute(child);
@@ -232,7 +233,7 @@ public class SMSEMOAIGD extends Algorithm{
 		maxEvaluation_ = ((Integer)this.getInputParameter("maxEvaluations"));
 		population_ = new Population(populationSize_);
 
-		ParentSelection_ = new BinaryTournament(null);
+		ParentSelection_ = new RandomSelectionWithoutReplacement(null);
 		ParentSelection_.setComparator(comparator);
 		isMaxProblem_    = ((boolean)this.getInputParameter("ismax"));
 		comparator.setIs(isMaxProblem_);
@@ -241,10 +242,7 @@ public class SMSEMOAIGD extends Algorithm{
 		mutation_ = operators_.get("mutation");
 		directoryname = ((String) this.getInputParameter("DirectoryName"));
 		isNorm = ((boolean) this.getInputParameter("Norm"));
-		numberOfDivision_    = ((Integer)this.getInputParameter("numberOfDivision"));
 		numberofObjectives_    = ((Integer)this.getInputParameter("numberOfObjectives"));
-		InnerWeightVectorDivision_ = ((Integer)this.getInputParameter("InnerWeightDivision"));
-		isInnerWeightVector_ = ((InnerWeightVectorDivision_ > 0));
 
 	}
 

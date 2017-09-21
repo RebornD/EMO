@@ -32,6 +32,8 @@ public class start {
 
 	@Option(name="-ga", aliases= "--GeneticAlgorithm", required=true, usage="Specify the populationSize")
 	private String geneticAlgorithmName;
+	@Option(name="-nowTrial", aliases= "---nowTrial", required=false, usage="Specify the nowTrial")
+	private int nowTrial = 0;
 	@Option(name="-p", aliases= "--Problem Name", required=true, usage="set the Problem Name")
 	private String problenName;
 	@Option(name="-max", aliases= "--MaxProblem", required=false, metaVar="<MaxProblem>", usage="Specify the the maximum Problem or minimum Problem: default assume min Problem")
@@ -84,7 +86,8 @@ public class start {
 	private int k = - 1;
 	@Option(name="-wfgl", aliases= "--Number of distance variables", required=false, usage="Specify the number of the distance variables on WFG Problem")
 	private int l = - 1;
-
+	@Option(name="-ep", aliases= "--Epsilon", required=false, usage="Specify the Epsilon on NormalizeObjectives")
+	private double epsiron = - 1;
 	@Argument
 	private List<String> arguments;
 
@@ -116,7 +119,7 @@ public class start {
 	        add(hashmap);
 	        hashmap.experiment_setting("setting/" + geneticAlgorithmName + ".st");
 	        AlgorithmMain algorithm =  AlgorithmMainFactory.getAlgorithmMain(geneticAlgorithmName, hashmap);
-	        algorithm.run();
+	        algorithm.run(nowTrial);
 	}
 
 	public void add(Setting hashmap) throws JMException{
@@ -137,7 +140,7 @@ public class start {
         hashmap.add("IsNorm", IsNorm);
         hashmap.add("outputNormal", OutNorm);
 
-
+        if(epsiron != -1) hashmap.add("epsilon", epsiron);
         if(populationSize != -1) hashmap.add("populationSize", populationSize);
         if(crossoverName != null) hashmap.add("CrossoverName", crossoverName);
         if(CrossoverProbablity != 2) hashmap.add("CrossoverProbablity", CrossoverProbablity);

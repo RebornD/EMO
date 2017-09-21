@@ -43,31 +43,31 @@ public abstract class AlgorithmMain {
 		Random.set_seed(seed);
 	}
 
-	public final void execute() throws NameNotFoundException, ClassNotFoundException, JMException{ 
+	public final void execute(int nowTrial) throws NameNotFoundException, ClassNotFoundException, JMException{
 
 		int counter=0;
 		long initTime = System.currentTimeMillis();
 		int  NumberOfRun = setting_.getAsInt("NumberOfTrial");
 		do {
 			counter++;
-			setSeed(counter + setting_.getAsInt("Seed"));
-			algorithm.setInputParameter("times", counter);
-			System.out.println(counter + "回目開始");
+			setSeed(nowTrial + counter + setting_.getAsInt("Seed"));
+			algorithm.setInputParameter("times",nowTrial+counter);
+			System.out.println(counter + "th start");
 			long innerinitTime = System.currentTimeMillis();
 			algorithm.execute();
 			long estimatedTime = System.currentTimeMillis() - innerinitTime;
-			System.out.println(counter + "回目終了 実行時間"  + estimatedTime + "ms" );
+			System.out.println(counter + "thstart  trial time is"  + estimatedTime + "ms" );
 		} while(counter<NumberOfRun);
-
 		long estimatedTime = System.currentTimeMillis() - initTime;
 		setting_.add("exuecutionTime",  estimatedTime +"ms" );
 	};
 
-	
-	public final void run() throws ClassNotFoundException, JMException, NameNotFoundException{ 
+
+	public final void run(int nowTrial) throws ClassNotFoundException, JMException, NameNotFoundException{
 		setParameter();
 		MakeDirectory();
-		execute();
+		write();
+		execute(nowTrial);
 		write();
 	};
 
