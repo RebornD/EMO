@@ -29,18 +29,19 @@ public class NormalizeMOEAComparator extends MOEADComparator {
 		Solution soltwo = (Solution)two;
 		double[] soloneDouble = new double[solone.getNumberOfObjectives()];
 		double[] soltwoDouble = new double[solone.getNumberOfObjectives()];
-
+		double[] refs = new double[solone.getNumberOfObjectives()];
 		for(int obj =0; obj < solone.getNumberOfObjectives();obj++){
 			soloneDouble[obj] = (solone.getObjective(obj) - Min[obj])/(Max[obj] - Min[obj] + epsilon);
 			soltwoDouble[obj] = (soltwo.getObjective(obj)- Min[obj])/(Max[obj] - Min[obj] + epsilon);
+			refs[obj] = (referencePoint.get(obj)- Min[obj])/(Max[obj] - Min[obj] + epsilon);
 		}
 		double scalar_one = 0;
 		double scalar_two = 0;
 
-		scalar_one = ScalaringFunction_.execute(soloneDouble, weightedVector.get(), referencePoint.get());
+		scalar_one = ScalaringFunction_.execute(soloneDouble, weightedVector.get(), refs);
 //		scalar_one = ScalaringFunction_.execute(solone, weightedVector.get(), referencePoint.get());
 
-		scalar_two = ScalaringFunction_.execute(soltwoDouble, weightedVector.get(), referencePoint.get());
+		scalar_two = ScalaringFunction_.execute(soltwoDouble, weightedVector.get(), refs);
 //		scalar_two = ScalaringFunction_.execute(soltwo, weightedVector.get(), referencePoint.get());
 
 

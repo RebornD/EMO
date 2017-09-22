@@ -137,7 +137,6 @@ public class NormalizeMOEAD extends Algorithm {
 
 		initReferencePoint();
 
-
 		population_.printVariablesToFile(directoryname + "/InitialVAR/InitialVAR" + time + ".dat");
 		population_.printObjectivesToFile(directoryname +  "/InitialFUN/InitialFUN" + time + ".dat");
 
@@ -152,7 +151,6 @@ public class NormalizeMOEAD extends Algorithm {
 		System.out.println(maxEvaluations);
 		// STEP 2. Update
 		do {
-//			System.out.println((++d) + "gen");
 			for (int i = 0; i < populationSize_; i++) {
 				int n = permutation[i]; // or int n = i;
 
@@ -186,7 +184,6 @@ public class NormalizeMOEAD extends Algorithm {
 					cont = false;
 					break;
 				}
-
 			}
 		} while (cont);
 		System.out.print(evaluations_ +"	");
@@ -197,18 +194,6 @@ public class NormalizeMOEAD extends Algorithm {
 		population_.printObjectivesToFile(directoryname +  "/FinalFUN/FinalFUN" + time + ".dat");
 		return population_;
 	}
-
-	public void UpdataMax(Solution sol){
-		for(int obj =0;obj < sol.getNumberOfObjectives();obj++){
-			MaxPoint[obj] = Math.max(MaxPoint[obj], sol.getObjective(obj));
-		}
-	}
-	public void UpdataMin(Solution sol){
-		for(int obj =0;obj < sol.getNumberOfObjectives();obj++){
-			MinPoint[obj] = Math.min(MinPoint[obj], sol.getObjective(obj));
-		}
-	}
-
 
 	public double[]  getNadia(Population pop){
 		int size = pop.get(0).getNumberOfObjectives();
@@ -245,37 +230,7 @@ public class NormalizeMOEAD extends Algorithm {
 		}
 		return nadirPoint;
 	};
-	public void Normalization(){
-		double [] ideal = getIdeal(population_);
 
-		for(int i=0;i<population_.size();i++){
-			Solution sol = population_.get(i);
-			for(int k =0;k<sol.getNumberOfObjectives();k++){
-				double a = sol.getObjective(k);
-				a  = a - ideal[k];
-				sol.setObjective(k, a);
-			}
-		}
-		NormalizationWithNadia();
-
-	}
-
-	public void NormalizationWithNadia(){
-		double[] nadia = getNadia(population_);
-
-		for(int i=0;i<nadia.length;i++){
-			nadia[i] = ( Math.abs(nadia[i]) >   1.0E-14) ? nadia[i]: 1.0E-14;
-		}
-
-		for(int i = 0;i < population_.size();i++){
-			Solution sol = population_.get(i);
-			for(int key = 0;key< sol.getNumberOfObjectives(); key++){
-				double a = sol.getObjective(key);
-				a = a /( nadia[key] );
-				sol.setObjective(key, a);
-			}
-		}
-	}
 
 	public void setNeighborhood() throws JMException{
 		Neiborhood a = new Neiborhood();
@@ -308,7 +263,6 @@ public class NormalizeMOEAD extends Algorithm {
 
 
 	public void initPopulation() throws JMException, ClassNotFoundException {
-
 		for (int i = 0; i < populationSize_; i++) {
 			Solution newSolution = new Solution(problem_);
 			problem_.repair(newSolution,null);
@@ -337,7 +291,6 @@ public class NormalizeMOEAD extends Algorithm {
 		int p;
 		boolean flag;
 		ss = sizeOfMatingNeiborhood_;
-//		System.out.println(sizeOfMatingNeiborhood_ + " 	");
 		while (list.size() < size) {
 
 				r = Random.nextIntIE(ss);
@@ -389,41 +342,28 @@ public class NormalizeMOEAD extends Algorithm {
 
 		// generate teh random permutation.
 		Permutation.randomPermutation(perm, size);
+
 		NDSRanking rank = new NDSRanking(isMAX_);
 		population_.add(indiv);
 		rank.setPop(population_);
 		rank.Ranking();
 		Population nonDominatedPopulation = rank.get(0);
-		double[] max = new double[problem_.getNumberOfObjectives()];
-		double[] min = new double[problem_.getNumberOfObjectives()];
-		for(int obj = 0;obj < max.length;obj++){
-			max[obj] = Double.NEGATIVE_INFINITY;
-			min[obj] = Double.POSITIVE_INFINITY;
-		}
 
-		System.out.println(rank.get(0).size());
-		for(int p = 0; p < nonDominatedPopulation.size(); p++){
-			for(int obj = 0;obj < problem_.getNumberOfObjectives();obj++){
-				max[obj] = Math.max(max[obj],nonDominatedPopulation.get(p).getObjective(obj));
-				min[obj] = Math.min(min[obj],nonDominatedPopulation.get(p).getObjective(obj));
-			}
-		}
-		
+		double[] min = getIdeal(nonDominatedPopulation);
+		double[] max = getNadia(nonDominatedPopulation);
 		comparator.setMaxPoint(max);
 		comparator.setMinPoint(min);
 		population_.pop();
+
 		for (int i = 0; i < size; i++) {
 			int k;
 			k = neighborhood_[id][perm[i]];
 			comparator.setWeightedVector(WeightedVector_[k]);
 			comparator.setRefernecePoint(ReferencePoint_);
-
-			
-			if (comparator.execute(indiv, population_.get(k)) == 1) {
+			if (comparator.execute(indiv, population_.get(k)) != -1) {
 				population_.replace(k, (indiv));
 			}
 		}
-
 	} // updateProblem
 
 	private void Setting() throws JMException{
@@ -448,7 +388,6 @@ public class NormalizeMOEAD extends Algorithm {
 		isInnerWeightVector_ = ((InnerWeightVectorDivision_ > 0));
 		populationSize_ = Calculator.conbination(numberofObjectives_-1 + numberOfDivision_ ,numberofObjectives_-1);
 
-		
 		outNormal_ = ((boolean) this.getInputParameter("outputNormal"));
 		isMAX_    = ((boolean)this.getInputParameter("IsMax"));
 		isNorm = ((boolean)this.getInputParameter("IsNorm"));
@@ -475,12 +414,7 @@ public class NormalizeMOEAD extends Algorithm {
 		comparator.setMaxPoint(MaxPoint);
 		comparator.setMaxPoint(MinPoint);
 		comparator.setEpsilon( (double)((this).getInputParameter("epsilon")));
-
 	}
-
-
-
-
 
 } // MOEAD
 

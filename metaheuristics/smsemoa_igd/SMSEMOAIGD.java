@@ -21,12 +21,6 @@ import util.Indicator.Hypervolume.WFGHV;
 import util.Ranking.NDSRanking;
 
 
-/****************************
- *
- * @author Ryuichi
- * 正規化についての注意
- * 正規化するときに0 devide にならないように注意する
- */
 
 public class SMSEMOAIGD extends Algorithm{
 
@@ -66,7 +60,6 @@ public class SMSEMOAIGD extends Algorithm{
 	private Population population_;
 	private Population Merge_;
 	String directoryname;
-
 
 	boolean  isMaxProblem_ ;
 

@@ -39,10 +39,10 @@ public class SMSEMOAIGDMain extends AlgorithmMain{
 		d.put("numberOfObjectives",OBJ);
 		problem = MOPFactory.getMOP(Problemname,d,"SMSEMOAIGD");
 		algorithm = new SMSEMOAIGD(problem);
-		String dddname = problem.getNumberOfObjectives()  + "OBJ";
 		algorithm.setInputParameter("numberOfObjectives",OBJ);
 		algorithm.setInputParameter("populationSize", setting_.getAsInt("populationSize"));
-
+		String dddname = problem.getNumberOfObjectives()  + "OBJ" + "/pop" +  setting_.getAsInt("populationSize");
+		
 
 		//		double[][] ref = fileReading(setting_.getAsStr("reffile"));
 //		algorithm.setInputParameter("ref", ref);
