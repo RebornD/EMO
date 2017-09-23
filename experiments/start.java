@@ -10,18 +10,18 @@ import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 /*
- * ここで指定することによりプログラムを実行できるようにする．
+ * ここで指定することによりプログラムを実行できるようにする． 
  * 増田さんが使用していたargs4j が便利そうなのでそれを利用できるか検討する．
  *
  * 現段階の案として，いちいち変更が必要なものに関して，settingに書くよりここに書いた方がいいものはここに書く．
- * 一回の試行で一つの問題設定を解く;
+ * 一回の試行で一つの問題を解く;
  *
  *
  */
 
-import core.AlgorithmMain;
-import main.AlgorithmMainFactory;
-import util.JMException;
+import mo.core.AlgorithmMain;
+import mo.main.AlgorithmMainFactory;
+import mo.util.JMException;
 
 /*
  * きれいにかきましょう．

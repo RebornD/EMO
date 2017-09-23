@@ -1,0 +1,30 @@
+		if (parameters.containsKey("numberOfVariables")){
+			System.out.println("test");
+			numberOfVariables_ = (Integer)parameters.get("numberOfVariables");
+		}
+		if (parameters.containsKey("numberOfObjectives")){
+			numberOfObj =(Integer) parameters.get("numberOfObjectives");
+		}
+
+		if (name.equalsIgnoreCase( "DTLZ1")){
+			numberOfVariables_	 = 	numberOfObj + 4;
+		} else if (name.equalsIgnoreCase( "DTLZ2")){
+			numberOfVariables_	 = 	numberOfObj + 9;
+		} else if (name.equalsIgnoreCase( "DTLZ3")){
+			numberOfVariables_	 = 	numberOfObj + 9;
+		} else if (name.equalsIgnoreCase( "DTLZ4")){
+			numberOfVariables_	 = 	numberOfObj + 9;
+		} else if (name.equalsIgnoreCase( "DTLZ4")){
+			numberOfVariables_	 = 	numberOfObj + 9;
+		} else if (name.equalsIgnoreCase( "DTLZ7")){
+			numberOfVariables_	 = 	numberOfObj + 19;
+		}else{
+			l = 20;
+			if(numberOfObj == 2){
+				k = 4;
+			} else {
+				k = 2*(numberOfObj - 1);
+			}
+			numberOfVariables_	 = 	k + l;
+			M = numberOfObj;
+		}
