@@ -1,21 +1,21 @@
--�͂��߂�
+-はじめに
 
-	EMO�A���S���Y�����܂Ƃ߂����́D
-	���킹�������Ńv���O�����̐��x�͕ۏႳ��Ă��邪�C���p����ۂ͊m�F�����Ă�������
-	������킩�邩�Ǝv���܂�����{��Jmetal���x�[�X�ɏ����Ă��܂�
+	EMOアルゴリズムをまとめたもの．
+	合わせ実験等でプログラムの精度は保障されているが，利用する際は確認をしてください
+	見たらわかるかと思いますが基本はJmetalをベースに書いています
 
--�\�[�X�R�[�h�̐���
+-ソースコードの説明
 
-	--core:�v���O�����̊�ՂƂȂ�N���X
+	--core:プログラムの基盤となるクラス
 	
-	--experiments:�������񂷃N���X�Ǝ����ݒ����舵���N���X�@experiments.start���w�肵�ĉ񂷂��Ƃ𐄏����܂��D�R�}���h���C�����͂ƁC�t�@�C���ǂݍ��݂ɂ������ݒ���w�肷��D
+	--experiments:実験を回すクラスと実験設定を取り扱うクラス　experiments.startを指定して回すことを推奨します．コマンドライン入力と，ファイル読み込みにより実験設定を指定します．コマンドライン入力についてはcommand.mdを参照
 		
-	--metaheuristics: ���ړI�œK����`�I�A���S���Y���DNSGAIII�͍��킹��Ă��Ȃ��̂ł��܂�Q�l�ɂ��Ȃ��ł�������
+	--metaheuristics: 多目的最適化遺伝的アルゴリズム．NSGAIIIは合わせれていないのであまり参考にしないでください
 	
-	--operators:�����C�ˑR�ψفC�I��
+	--operators:交叉，突然変異，選択
 	
-	--problem:���ړI�x���`�}�[�N���
+	--problem:多目的ベンチマーク問題
 	
-	--utils�F���̂��������C���\�厖�ȃN���X������
+	--utils：そのたもろもろ，結構大事なクラスもある
 	
 
