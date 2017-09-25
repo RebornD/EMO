@@ -30,10 +30,12 @@ public class NormalizeMOEAComparator extends MOEADComparator {
 		double[] soloneDouble = new double[solone.getNumberOfObjectives()];
 		double[] soltwoDouble = new double[solone.getNumberOfObjectives()];
 		double[] refs = new double[solone.getNumberOfObjectives()];
+
+
 		for(int obj =0; obj < solone.getNumberOfObjectives();obj++){
 			soloneDouble[obj] = (solone.getObjective(obj) - Min[obj])/(Max[obj] - Min[obj] + epsilon);
 			soltwoDouble[obj] = (soltwo.getObjective(obj)- Min[obj])/(Max[obj] - Min[obj] + epsilon);
-			refs[obj] = (referencePoint.get(obj)- Min[obj])/(Max[obj] - Min[obj] + epsilon);
+			refs[obj] =(referencePoint.get(obj)- Min[obj])/(Max[obj] - Min[obj] + epsilon);
 		}
 		double scalar_one = 0;
 		double scalar_two = 0;

@@ -9,10 +9,6 @@ import mo.util.Permutation;
 
 
 /*
- * addとreplace のみ深いコピーでその他は浅いコピーを行っている．
- * 一応確認してみて浅いコピーでもＯＫなら浅いコピーに変更を行う．
- * ポインタのみのコピーとなる分，浅いコピーの方が実行速度は速くなる．決定変数の多いNSGAIIのナップサックなら大体1回試行で10倍ぐらい変実行層度が変化する
- *
  * 計算速度　
  * 配列の要素アクセス O(1)
  * removeは　O(n)
@@ -23,7 +19,7 @@ import mo.util.Permutation;
  * Replace はO(1)
  * clearはO(1)
  * SortはO(n^2)  のバブルソート
- *
+ * popはO(1)
  */
 
 
@@ -98,11 +94,11 @@ public class Population {
 		assert populationSize <= capacity : "キャパを考えろ";
 		population_[populationSize++] = a;//new Solution(a);
 	}
-	public void add_sharrow(Solution a){
+	public void add_deep(Solution a){
 		assert a.getNumberOfObjectives() >0 : "add in add(Solution)   :: Solution have  "  +  a.getNumberOfObjectives()+ " dimension";
 		assert (a.getNumberOfObjectives() == nOfD_  ) || nOfD_ == 0  :" add in add(Solution)   ::  Solution's Objective dimenstion and Population dimension is diffrence  :  solution  dimension is " + a.getNumberOfObjectives()  + "	" + "Population Objective dimension  is " + nOfD_;
 		assert populationSize <= capacity : "キャパを考えろ";
-		population_[populationSize++] = a;
+		population_[populationSize++] = new Solution(a);
 	}
 
 
@@ -249,11 +245,10 @@ public class Population {
 				int numberOfVariables = population_[0].getNumberOfVariables();
 
 				for(int i = 0 ;i < populationSize;i++){
-					for (int j = 0; j < numberOfVariables; j++){
+					for (int j = 0; j < numberOfVariables-1; j++){
 						bw.write(population_[i].getValue(j) + "	");
 					}
-
-
+					bw.write(population_[i].getValue(numberOfVariables-1) + "	");
 					bw.newLine();
 
 				}
@@ -273,9 +268,10 @@ public class Population {
 			if (size() > 0) {
 				int NumberOfObjectives = population_[0].getNumberOfObjectives();
 				for(int i = 0 ;i < populationSize;i++){
-					for (int j = 0; j < NumberOfObjectives; j++){
+					for (int j = 0; j < NumberOfObjectives-1; j++){
 							bw.write(population_[i].getObjective(j) + "	");
 					}
+					bw.write(population_[i].getObjective(NumberOfObjectives-1) + "	");
 					bw.newLine();
 
 				}
@@ -297,7 +293,7 @@ public class Population {
 					for (int j = 0; j < NumberOfObjectives; j++){
 							bw.write(population_[i].getObjective(j) + "	");
 					}
-					bw.write(population_[i].getViolation() + " ");
+					bw.write(String.valueOf(population_[i].getViolation()));
 					bw.newLine();
 
 				}
@@ -320,8 +316,7 @@ public class Population {
 					for (int j = 0; j < NumberOfObjectives; j++){
 							bw.write(population_[i].getObjective(j) + "	");
 					}
-					bw.write( population_[i].getViolation() + " ");
-
+					bw.write(String.valueOf(population_[i].getViolation()));
 					bw.newLine();
 					}
 				}
@@ -345,7 +340,7 @@ public class Population {
 					for (int j = 0; j < NumberOfObjectives; j++){
 							bw.write(population_[i].getObjective(j) + "	");
 					}
-					bw.write(population_[i].getViolation() + " ");
+					bw.write(String.valueOf(population_[i].getViolation()));
  					bw.newLine();
 					}
 				}

@@ -119,11 +119,7 @@ public class NormalizeMOEAD extends Algorithm {
 	int maxEvaluations;
 	int time;
 
-
 	private boolean outNormal_;
-
-
-
 
 	public Population execute() throws JMException, ClassNotFoundException {
 
