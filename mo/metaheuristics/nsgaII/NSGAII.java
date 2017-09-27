@@ -107,6 +107,7 @@ public class NSGAII extends Algorithm {
 		initPopulation();
 
 		population_.printVariablesToFile(directoryname + "/InitialVAR/InitialVAR" + time + ".dat");
+
 		population_.printObjectivesToFile(directoryname + "/InitialFUN/InitiaFUN" + time + ".dat");
 
 		merge_ = new Population(populationSize_*2);

@@ -13,7 +13,7 @@ import mo.operators.crossover.CrossoverFactory;
 import mo.operators.mutation.MutationFactory;
 import mo.problems.MOP.MOPFactory;
 import mo.util.JMException;
- 
+
 public class NSGAIIIMain extends AlgorithmMain{
 
 	public NSGAIIIMain(Setting test) {
@@ -41,10 +41,17 @@ public class NSGAIIIMain extends AlgorithmMain{
 
 		String dddname = problem.getNumberOfObjectives()  + "OBJ" + setting_.getAsInt("Division") +"div";
 		algorithm.setInputParameter("populationSize", setting_.getAsInt("populationSize"));
+		String name = "";
 
+		if (setting_.containsKey("DirectoryName") && setting_.getAsStr("DirectoryName") != null){
+			name += setting_.getAsStr("DirectoryName");
+		}
 		DirectoryName = "result/NSGAIII/" + Problemname+"/"+dddname;
-		algorithm.setInputParameter("DirectoryName",  DirectoryName);
 
+		DirectoryName = name + "/"+ DirectoryName;
+
+
+		algorithm.setInputParameter("DirectoryName",  DirectoryName);
 		algorithm.setInputParameter("maxEvaluations", setting_.getAsInt("maxEvaluations"));
 		algorithm.setInputParameter("numberOfParents", 2);
 //		algorithm.setInputParameter("SMSEMOA", 2);
@@ -64,7 +71,6 @@ public class NSGAIIIMain extends AlgorithmMain{
 		innnerWeightDivision =  setting_.getAsInt("Objectives") >= 6 ? innnerWeightDivision : 0;
 		algorithm.setInputParameter("InnerWeightDivision",innnerWeightDivision);
 		algorithm.setInputParameter("numberOfObjectives",setting_.getAsInt("Objectives"));// Boolean.valueOf((String)(experiment_setting_.get("isNorm"))));
-
 
 		parameters.put("Crossoverprobability",setting_.getAsDouble("CrossoverProbability"));
 		parameters.put("CrossoverdistributionIndex",setting_.getAsDouble("CrossoverDistribution"));

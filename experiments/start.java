@@ -10,7 +10,7 @@ import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 /*
- * ここで指定することによりプログラムを実行できるようにする． 
+ * ここで指定することによりプログラムを実行できるようにする．
  * 増田さんが使用していたargs4j が便利そうなのでそれを利用できるか検討する．
  *
  * 現段階の案として，いちいち変更が必要なものに関して，settingに書くよりここに書いた方がいいものはここに書く．
@@ -88,6 +88,8 @@ public class start {
 	private int l = - 1;
 	@Option(name="-ep", aliases= "--Epsilon", required=false, usage="Specify the Epsilon on NormalizeObjectives")
 	private double epsiron = - 1;
+	@Option(name="-dir", aliases= "--Directory", required=false, usage="Specify the Directory storing Directory")
+	private String Directory = null;
 	@Argument
 	private List<String> arguments;
 
@@ -165,8 +167,7 @@ public class start {
         if(alphar != -1) hashmap.add("alpha", alphar);
         if(matingNeighborhood !=-1) hashmap.add("matingNeighborhood", matingNeighborhood);
         if(ReplaceNeighborhood !=-1) hashmap.add("ReplaceNeighborhood", ReplaceNeighborhood);
-
-
+        if(Directory != null) hashmap.add("ResultDirectory", Directory);
 
 	}
 

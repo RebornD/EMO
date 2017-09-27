@@ -347,6 +347,8 @@ public class NormalizeMOEAD extends Algorithm {
 
 		double[] min = getIdeal(nonDominatedPopulation);
 		double[] max = getNadia(nonDominatedPopulation);
+		
+		
 		comparator.setMaxPoint(max);
 		comparator.setMinPoint(min);
 		population_.pop();

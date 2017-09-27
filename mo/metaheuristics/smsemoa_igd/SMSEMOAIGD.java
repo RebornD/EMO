@@ -43,24 +43,34 @@ public class SMSEMOAIGD extends Algorithm{
 
 
 	int numberofObjectives_;
+	
 	int numberOfDivision_;
+	
 	boolean isInnerWeightVector_;
+	
 	int InnerWeightVectorDivision_;
 
 	int numberOfParents_;
+	
 	private SMSEMOAComparator comparator;
+	
 	private int populationSize_;
 
 	NDSRanking ranking;
+	
 	int evaluations_;
+	
 	HashMap parameters;
 	Operator crossover_;
 	Operator mutation_;
-	ParentsSelection ParentSelection_;
-	private Population population_;
-	private Population Merge_;
-	String directoryname;
 
+	ParentsSelection ParentSelection_;
+	
+	private Population population_;
+	
+	private Population Merge_;
+	
+	String directoryname;
 	boolean  isMaxProblem_ ;
 
 	@Override
@@ -122,8 +132,7 @@ public class SMSEMOAIGD extends Algorithm{
 				System.out.println("test");
 
 				if(!isMaxProblem_){
-
-					NormiaztionFormin(no);
+					assert false : "まだ　未設定";
 				} else {
 					assert false : "まだ　未設定";
 				}
