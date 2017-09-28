@@ -25,7 +25,9 @@ public class MOEADSetting {
 			numberOfVariables_	 = 	numberOfObj + 9;
 		} else if (name.equalsIgnoreCase( "DTLZ7")){
 			numberOfVariables_	 = 	numberOfObj + 19;
-		}else if (name.equalsIgnoreCase( "WFG1")){
+		}else if (name.equalsIgnoreCase("NormDTLZ1")){
+			numberOfVariables_	 = 	numberOfObj -1;
+		}	else if (name.equalsIgnoreCase( "WFG1")){
 			numberOfVariables_	 = 	24;
 
 			k = numberOfObj -1;

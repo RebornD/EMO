@@ -24,6 +24,8 @@ public class SMSEMOAIGDSetting {
 			numberOfVariables_	 = 	numberOfObj + 9;
 		} else if (Problemname.equalsIgnoreCase( "DTLZ4")){
 			numberOfVariables_	 = 	numberOfObj + 19;
+		} else if (Problemname.equalsIgnoreCase("NormDTLZ1")){
+			numberOfVariables_	 = 	numberOfObj -1;
 		} else if (Problemname.equalsIgnoreCase( "WFG1")){
 			numberOfVariables_	 = 	24;
 			k = k;

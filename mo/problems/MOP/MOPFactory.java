@@ -38,6 +38,7 @@ import mo.problems.MOP.InvertedWFG.InvertedWFG6;
 import mo.problems.MOP.InvertedWFG.InvertedWFG7;
 import mo.problems.MOP.InvertedWFG.InvertedWFG8;
 import mo.problems.MOP.InvertedWFG.InvertedWFG9;
+import mo.problems.MOP.NDTLZ.NormalizeDTLZ1;
 import mo.problems.MOP.ScaledDTLZ.ScaledDTLZ1;
 import mo.problems.MOP.ScaledDTLZ.ScaledDTLZ2;
 import mo.problems.MOP.SettingMaker.Settingpublisher;
@@ -89,7 +90,9 @@ public class MOPFactory {
 			return new DTLZ6(numberOfVariables_,numberOfObj);
 		}else if (name.equalsIgnoreCase("DTLZ7")){
 			return new DTLZ7(numberOfVariables_,numberOfObj);
-		} else if (name.equalsIgnoreCase("ScaledDTLZ1")){
+		}else if (name.equalsIgnoreCase("NormDTLZ1")){
+				return new NormalizeDTLZ1(numberOfVariables_,numberOfObj);
+		}	else if (name.equalsIgnoreCase("ScaledDTLZ1")){
 			return new ScaledDTLZ1(numberOfVariables_,numberOfObj);
 		} else if (name.equalsIgnoreCase("ScaledDTLZ2")){
 			return new ScaledDTLZ2(numberOfVariables_,numberOfObj);

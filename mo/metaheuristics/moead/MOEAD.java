@@ -129,13 +129,10 @@ public class MOEAD extends Algorithm {
 		population_.printVariablesToFile(directoryname + "/InitialVAR/InitialVAR" + time + ".dat");
 		population_.printObjectivesToFile(directoryname +  "/InitialFUN/InitialFUN" + time + ".dat");
 
-
-
 		int[] permutation = new int[populationSize_];
 		Permutation.randomPermutation(permutation,populationSize_);
 		Solution offSpring;
 		boolean cont = true;
-
 
 		// STEP 2. Update
 		do {
