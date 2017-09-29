@@ -48,10 +48,9 @@ public class IHyperVolume  extends Indicator{
 
 	public static void set(boolean arg){
 		if (arg)
-		setMAX();
-			else
-		setMIN();
-
+			setMAX();
+		else
+			setMIN();
 	}
 
 
@@ -84,7 +83,6 @@ public class IHyperVolume  extends Indicator{
 
 		ret[perm[0]] = Double.POSITIVE_INFINITY;
 		ret[perm[d.size() - 1]] = Double.POSITIVE_INFINITY;
-
 
 		for (int i = 1; i < d.size() - 1; i++){
 			double r1 = d.get(perm[i + 1]).get(0) - d.get(perm[i]).get(0);
@@ -160,14 +158,12 @@ public class IHyperVolume  extends Indicator{
 
 		//if(d.getDimension() == 3) return IHV3D(d);
 
-
 		return  IHVOver4D(d);
 	}
 
 	private static double[] IHVOver4D(Front d) throws JMException {
 		double[] ret = new double[d.size()];
 		WFGHV wfghv_ = new WFGHV(referencePoint_);
-
 		// contribution v in S is calclated by the (HV(S) - HV(S/v))
 		// HV(S) is same, So we calclated only HV(S/v)
 		for(int i=0;i<d.size();i++){

@@ -44,7 +44,6 @@ public abstract class AlgorithmMain {
 	}
 
 	public final void execute(int nowTrial) throws NameNotFoundException, ClassNotFoundException, JMException{
-
 		int counter=0;
 		long initTime = System.currentTimeMillis();
 		int  NumberOfRun = setting_.getAsInt("NumberOfTrial");

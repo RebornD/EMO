@@ -13,20 +13,17 @@ public class Settingpublisher {
 			return MOEADSetting.getSetting(numberOfObj, problemname);
 		} else if (Algorithmname.equalsIgnoreCase("SMSEMOA")){
 			return SMSEMOASetting.getSetting(numberOfObj, problemname);
+		} else if (Algorithmname.equalsIgnoreCase("ParallelSMSEMOA")){
+			return SMSEMOASetting.getSetting(numberOfObj, problemname);
 		}  else if (Algorithmname.equalsIgnoreCase("SMSEMOAIGD")){
+			return SMSEMOAIGDSetting.getSetting(numberOfObj, problemname);
+		}  else if (Algorithmname.equalsIgnoreCase("ParallelSMSEMOAIGD")){
 			return SMSEMOAIGDSetting.getSetting(numberOfObj, problemname);
 		}  else if (Algorithmname.equalsIgnoreCase("NSGAIII")){
 			return NSGAIIISetting.getSetting(numberOfObj, problemname);
-		}else if (Algorithmname.equalsIgnoreCase("NormalizeMOEAD")){
+		 }else if (Algorithmname.equalsIgnoreCase("NormalizeMOEAD")){
 			return NormalizeMOEADSetting.getSetting(numberOfObj, problemname);
 		}
-
-
-
-
-
-
-
 
 
 		assert false : Algorithmname +" is not found";
