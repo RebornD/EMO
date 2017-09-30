@@ -133,4 +133,5 @@ public class MOEADMain extends AlgorithmMain{
 		algorithm.setInputParameter("IsNorm", setting_.getAsBool("IsNorm"));
 
 	}
+
 }

@@ -8,7 +8,7 @@ import mo.util.DirectoryMaker;
 import mo.util.JMException;
 import mo.util.Random;
 
-public abstract class AlgorithmMain {
+public abstract class AlgorithmMain implements Runnable{
 
 	protected Algorithm algorithm;
 
@@ -61,6 +61,9 @@ public abstract class AlgorithmMain {
 		setting_.add("exuecutionTime",  estimatedTime +"ms" );
 	};
 
+	public void run(){
+
+	}
 
 	public final void run(int nowTrial) throws ClassNotFoundException, JMException, NameNotFoundException{
 		setParameter();
@@ -70,6 +73,9 @@ public abstract class AlgorithmMain {
 		write();
 	};
 
+	public Algorithm getAlgorithm(){
+		return algorithm_;
+	}
 	public abstract void setParameter() throws NameNotFoundException, ClassNotFoundException, JMException;
 
 }
