@@ -8,18 +8,19 @@ public class Master extends Worker {
 
 	private int numberOfTasks;
 
-
-
 	@Override
 	public void Communication(ObjectInputStream one, ObjectInputStream two) {
 		// TODO 自動生成されたメソッド・スタブ
 
 	}
 
+	public int CountSlaves(){
+		return 10;
+	}
+
+
 	@Override
 	public void Send() {
-		// TODO 自動生成されたメソッド・スタブ
-
 	}
 
 	@Override
@@ -31,6 +32,19 @@ public class Master extends Worker {
 	@Override
 	public void run() {
 		Send();
+	}
+
+	public int CountTasks() {
+		return 0;
+	}
+
+	public void subscriptAllHOSTNAME() {
+
+	}
+
+	public Object getObservers() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
 	}
 
 

@@ -5,9 +5,19 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import mo.util.Random;
+
 
 public abstract  class Algorithm implements Serializable {
 	protected Problem problem_;
+
+	Random random;
+
+	public void setRandom(Random d){
+		random = d;
+	}
+
+
 
 	//名前を入力してそれに該当したoperator を返す
 	protected Map<String, Operator> operators_ = null;

@@ -62,7 +62,7 @@ public abstract class AlgorithmMain implements Runnable{
 	};
 
 	public void run(){
-
+		
 	}
 
 	public final void run(int nowTrial) throws ClassNotFoundException, JMException, NameNotFoundException{
@@ -73,9 +73,6 @@ public abstract class AlgorithmMain implements Runnable{
 		write();
 	};
 
-	public Algorithm getAlgorithm(){
-		return algorithm_;
-	}
 	public abstract void setParameter() throws NameNotFoundException, ClassNotFoundException, JMException;
 
 }

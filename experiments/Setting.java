@@ -226,4 +226,10 @@ public class Setting{
 		}
 	}
 
+	public Setting set(String terminateSignal, Object true1) {
+		Setting setting = new Setting();
+		setting.set(terminateSignal, true1);
+		return setting;
+	}
+
 }

@@ -10,13 +10,18 @@ public interface NetWorkConnection {
 
 	int PORT_INDEX = 23579;
 
-	public static final int 	BYTE_SIZE = 512;
+	int SUCCESS = 1;
+	int NETWORKEXCEPTION = 2;
+	int WORKEREXCEPTION = 3;
+	int DEAD	= -1;
+
+	public static final int 	BUFFER_SIZE = 512;
 
 	void Communication(  ObjectInputStream one, ObjectInputStream two);
-
 
 	public void Send();
 
 	public void recieve();
+
 
 }

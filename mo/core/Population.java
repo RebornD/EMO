@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 
 import mo.util.Permutation;
+import mo.util.Random;
 
 
 /*
@@ -32,6 +33,12 @@ public class Population {
 
 	int getCapacity(){return capacity;}
 
+	
+	private final Random random = new Random();
+
+	
+	
+	
 	public int getNumberOfD(){
 		return nOfD_;
 	}

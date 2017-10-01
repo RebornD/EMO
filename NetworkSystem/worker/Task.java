@@ -6,4 +6,5 @@ public class Task {
 
 	private Setting setting_;
 
+	
 }
