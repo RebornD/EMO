@@ -1,6 +1,11 @@
 package NetworkSystem.worker;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
+import experiments.Setting;
 
 public class Slave extends Worker{
 
@@ -8,10 +13,68 @@ public class Slave extends Worker{
 
 
 
-	public static void main(String[] argv){
+	public static void main(String[] argv) throws Exception{
+			Slave slave = new Slave();
+			ObjectOutputStream oos;
+			SlaveDeadHook deadhook;
+			Socket socket = null;
+			try {
+				socket = new Socket(HOSTNAME,PORTINDEX);
+			} catch (IOException e) {
+				System.err.print("I can't found such a HOSTNAME or PORTINDEX");
+				e.printStackTrace();
+				System.exit(-1);
+			}
+
+			try {
+				oos = new ObjectOutputStream(socket.getOutputStream());
+				deadhook = new SlaveDeadHook(oos);
+				Runtime.getRuntime().addShutdownHook(deadhook);
+			} catch (IOException e) {
+				e.printStackTrace();
+				socket.close();
+				return;
+			}
+			ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+			slave.runClient(ois,oos);
+			Runtime.getRuntime().removeShutdownHook(deadhook);
+			socket.close();
+
+	}
+	private Setting setting;
+
+	private void runClient(ObjectInputStream ois, ObjectOutputStream oos) throws ClassNotFoundException, IOException {
+		setting = (Setting) ois.readObject();
 
 
+		while(!setting.containsKey(TERMINATE_SIGNAL)){
+			Throwable thrown = null;
+			try{
+				runEeperiments();
+			} catch (Throwable d){
+				thrown = d;
+			}
+			if (thrown == null){
+				oos.writeObject(SUCCESS);
 
+				assert false: "not yet";
+
+			} else {
+				oos.writeObject(EXECUTEEXCEPTION);
+				oos.writeObject(thrown);
+				thrown = null;
+			}
+			oos.flush();
+			oos.reset();
+
+			setting = (Setting)ois.readObject();
+		}
+
+	}
+
+
+	private void runEeperiments() {
+		// TODO 自動生成されたメソッド・スタブ
 
 	}
 
@@ -81,4 +144,50 @@ public class Slave extends Worker{
 		return ISDEAD;
 	}
 
+}
+
+class SlaveDeadHook extends Thread implements NetWorkConnection {
+	private ObjectOutputStream oos_;
+	public boolean unexpected = true;
+
+	public SlaveDeadHook(ObjectOutputStream oos) {
+		oos_ = oos;
+	}
+
+	@Override
+	public void run() {
+		try {
+			if (unexpected) {
+				oos_.writeObject(DEAD);
+				oos_.flush();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// closing Stream of a ServerSocket will also close the socket.
+				oos_.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void Communication(ObjectInputStream one, ObjectInputStream two) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+	@Override
+	public void Send() {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+	@Override
+	public void recieve() {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
 }

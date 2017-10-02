@@ -38,7 +38,7 @@ public abstract class Worker implements NetWorkConnection,Runnable{
 
 
 
-	public int SendFile(String filepath){
+	public int SendFile(String filepath){ 
 		  ServerSocket ServerSocket = null;
 		  byte[] buffer = new byte[BUFFER_SIZE];
 		  Socket socket = null;
@@ -80,7 +80,7 @@ public abstract class Worker implements NetWorkConnection,Runnable{
 		  return ret;
 	}
 
-	public int RecieveFile(String filepath){
+	public int RecieveFile(String filepath){ 
 		Socket socket = null;
 		byte[] buffer = new byte[BUFFER_SIZE];
 		int ret;

@@ -64,8 +64,8 @@ public class MasterShell implements ShellManageable{
 
 	}
 
-
-	public void ALLHOSTNAME(){
+	@Command // two,
+	public void HOST(){
 		master_.subscriptAllHOSTNAME();
 	}
 
@@ -77,18 +77,16 @@ public class MasterShell implements ShellManageable{
 	 public static void main(String[] args) throws IOException {
 			Master master = new Master();
 			MasterShell shell = new MasterShell(master);
-	//		master.addObserver(shell);
+	// 		master.addObserver(shell);
 			new Thread(master).start();
 			shell.shell_ = ShellFactory.createConsoleShell("",
 					"Grid Computing System - Master Shell", shell);
 			shell.shell_.commandLoop();
-
 	 }
 
 	@Override
 	public void cliLeaveLoop() {
 		System.out.println("End of ShellScprint");
-
 	}
 
 
