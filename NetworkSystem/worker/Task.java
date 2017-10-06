@@ -54,6 +54,23 @@ public class Task implements Runnable,Signal{
 	public int getSignal() {
 		return SIGNAL;
 	}
+
+	public Setting getSetting(){
+		return setting_;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

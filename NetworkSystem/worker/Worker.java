@@ -38,13 +38,13 @@ public abstract class Worker implements NetWorkConnection,Runnable{
 
 
 
-	public int SendFile(String filepath){ 
+	public int SendFile(String filepath){
 		  ServerSocket ServerSocket = null;
 		  byte[] buffer = new byte[BUFFER_SIZE];
 		  Socket socket = null;
 		  int ret = 0;
 		  try {
-			  ServerSocket = new ServerSocket(PORT_INDEX);
+			  ServerSocket = new ServerSocket(PORTINDEX);
 			  socket = ServerSocket.accept();
 
 			  String line;
@@ -80,13 +80,13 @@ public abstract class Worker implements NetWorkConnection,Runnable{
 		  return ret;
 	}
 
-	public int RecieveFile(String filepath){ 
+	public int RecieveFile(String filepath){
 		Socket socket = null;
 		byte[] buffer = new byte[BUFFER_SIZE];
 		int ret;
 		try {
 			// 特定のホストのポート番号を見て空いていれば接続する．
-			socket = new Socket(HOSTNAME,PORT_INDEX);
+			socket = new Socket(HOSTNAME,PORTINDEX);
 			System.out.println("Connection is success");
 			InputStream  inputStream  = (socket.getInputStream());
 			OutputStream outputStream = new FileOutputStream(filepath);

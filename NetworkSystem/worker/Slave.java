@@ -41,11 +41,9 @@ public class Slave extends Worker{
 			socket.close();
 
 	}
-	private Setting setting;
 
 	private void runClient(ObjectInputStream ois, ObjectOutputStream oos) throws ClassNotFoundException, IOException {
 		setting = (Setting) ois.readObject();
-
 
 		while(!setting.containsKey(TERMINATE_SIGNAL)){
 			Throwable thrown = null;
@@ -66,15 +64,22 @@ public class Slave extends Worker{
 			}
 			oos.flush();
 			oos.reset();
-
 			setting = (Setting)ois.readObject();
 		}
 
 	}
-
-
 	private void runEeperiments() {
 		// TODO 自動生成されたメソッド・スタブ
+
+	}
+	private Setting setting;
+/*	private ArrayStreamProvider streamProvider_ = new ArrayStreamProvider();
+	private Setting setting;
+	private URLClassLoader loader_;
+	private AlgorithmMain main_;
+*/
+	private void runSolver() {
+
 
 	}
 

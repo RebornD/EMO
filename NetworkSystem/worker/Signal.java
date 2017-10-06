@@ -7,7 +7,6 @@ public interface Signal {
 	int NETWORKEXCEPTION = 2;
 	int EXECUTEEXCEPTION = 3;
 	int DEAD	= -1;
-
 	public int getSignal();
 
 
