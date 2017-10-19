@@ -2,15 +2,12 @@ package NetworkSystem.Provider;
 
 import java.io.ByteArrayOutputStream;
 import java.io.CharArrayWriter;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.Writer;
 import java.util.HashMap;
 
 public class ArrayStreamProvider {
 	public HashMap<String, ByteArrayOutputStream> arrayOutputStreams = new HashMap<>();
 	public HashMap<String, CharArrayWriter> arrayWriters = new HashMap<>();
-
+/*
 	public OutputStream getOutputStream(String path) throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		arrayOutputStreams.put(path, baos);
@@ -21,7 +18,7 @@ public class ArrayStreamProvider {
 		arrayWriters.put(path, caw);
 		return caw;
 	}
-
+*/
 	public void clear() {
 		arrayOutputStreams.clear();
 		arrayWriters.clear();
