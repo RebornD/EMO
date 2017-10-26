@@ -17,7 +17,7 @@ public abstract class Problem {
 
 
 
-	protected int numberOfConstrain_;
+	protected int numberOfConstraint_;
 	protected int numberOfVariables_;
 	protected int numberOfObjectives_;
 	protected String problemName_;
@@ -32,7 +32,7 @@ public abstract class Problem {
 	}
 
 	public int getNumberOfConstrain(){
-		return numberOfConstrain_;
+		return numberOfConstraint_;
 	}
 
 

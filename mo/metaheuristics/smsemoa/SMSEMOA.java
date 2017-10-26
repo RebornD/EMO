@@ -117,11 +117,10 @@ public class SMSEMOA extends Algorithm{
 		if(empty.size() == 1){
 			number = empty.get(0).getID();
 		}  else  {
-
 			Front no = new Front(empty);
-			if(isNorm)
+			if(isNorm){
 				Normalaization(no);
-
+			}
 			double[] empt =IHyperVolume.IHV(no);
 			List<Integer> list = IHyperVolume.getLowestContribution(empt);
 			int d = Random.nextIntIE(list.size());
@@ -154,7 +153,7 @@ public class SMSEMOA extends Algorithm{
 		return list;
 	 }
 
-	 //最小化問題のみの正規化 //GEC
+	 //最小化問題のみの正規化 //GECOO用
 	private void NormiaztionFormin(Front no) {
 		assert no.size() > 0 : "Front size is "+ no.size();
 		assert no.getDimension() > 1 : "Front Dimesnion is "+ no.getDimension();
@@ -169,7 +168,6 @@ public class SMSEMOA extends Algorithm{
 			vvv[j] = Math.sqrt( (Nadia[j] -Ideal[j])*(Nadia[j] -Ideal[j])) > 1.0E-10 ? Math.sqrt( (Nadia[j] -Ideal[j])*(Nadia[j] -Ideal[j])): 1.0E-10;
 		}
 
-
 		for(int i=0;i<no.size();i++){
 			POINT d = no.get(i);
 			for(int j=0;j<no.getDimension();j++){
@@ -178,22 +176,6 @@ public class SMSEMOA extends Algorithm{
 			}
 		}
 	}
-
-	public Population getWorstRankSolutionSet(Population merge){
-		assert worstRank_ > 0 : "the worst rank is " + worstRank_;
-
-		Population pop = new Population(merge.size());
-		for(int i=0; i < merge.size() ;i ++ ){
-			if(merge.get(i).getRank() == worstRank_){
-				pop.add(new Solution( merge.get(i)));
-			}
-		}
-
-		assert pop.size() > 0 : "the pop size is "  + pop.size();
-		return pop;
-	}
-
-
 
 	public double[] getIdealPoint(Front d){
 		double[] ret = new double[d.getDimension()];
@@ -226,16 +208,6 @@ public class SMSEMOA extends Algorithm{
 
 	}
 
-	public Population getSameRankPop(Population me,int d){
-		Population pop = new Population();
-		for(int i=0; i < me.size() ;i ++ ){
-			if(me.get(i).getRank() == d){
-				pop.add(new Solution( me.get(i)));
-			}
-		}
-		assert pop.size() > 0 : "the pop size is "  + pop.size();
-		return pop;
-	}
 
 	public Population getbestRankSolutionSet(Population me){
 		Population pop = new Population(me.size());
@@ -257,10 +229,10 @@ public class SMSEMOA extends Algorithm{
 			problem_.repair(newSolution,null);
 			problem_.evaluate(newSolution);
 		 	population_.add(newSolution);
-		} // for
-	} // initPopulatiown
- // initPopulation
-
+		}
+	}
+	
+	
 	public void makeNextGeneration() throws JMException {
 		Merge_ = new Population(populationSize_ + 1);
 		Merge_.merge(population_);
@@ -309,7 +281,6 @@ public class SMSEMOA extends Algorithm{
 		mutation_ = operators_.get("mutation"); // default: polynomial mutation
 		directoryname = ((String) this.getInputParameter("DirectoryName"));
 		isNorm = ((boolean) this.getInputParameter("Norm"));
-
 	}
 
 }

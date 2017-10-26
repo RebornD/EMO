@@ -24,7 +24,8 @@ public class Allcalc {
 	public static double[] calclate(Front  arg,double[] ref,boolean is, int cpu){
 
 		double[] ret = new double[arg.size()];
-
+		
+		
 		ExecutorService ex = Executors.newFixedThreadPool(cpu);
 		List<Future<Double>> hvs = new ArrayList<Future<Double>>();
 

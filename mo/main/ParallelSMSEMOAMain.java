@@ -120,7 +120,7 @@ public class ParallelSMSEMOAMain extends AlgorithmMain{
 		algorithm.addOperator("mutation", mutation);
 
 		algorithm.setInputParameter("ismax", setting_.getAsBool("isMax"));
-		algorithm.setInputParameter("isNorm", setting_.getAsBool("IsNorm"));
+		algorithm.setInputParameter("isNorm", setting_.getAsBool("Norm"));
 
 
 	}

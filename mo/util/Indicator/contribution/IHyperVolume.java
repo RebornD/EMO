@@ -168,7 +168,7 @@ public class IHyperVolume  extends Indicator{
 		// HV(S) is same, So we calclated only HV(S/v)
 		for(int i=0;i<d.size();i++){
 			 wfghv_ = new WFGHV(referencePoint_);
-			 ret[i] =wfghv_.exclhv(d,i,referencePoint_,comparator_.get());
+			 ret[i] = wfghv_.exclhv(d,i,referencePoint_,comparator_.get());
 		}
 		return ret;
 	}
@@ -176,7 +176,7 @@ public class IHyperVolume  extends Indicator{
 
 //この実装方法は確かだけど絶対遅い　
 //これは貢献度計算の大小関係は同じであるが，値はかならず同じとはかぎらない
-/*		private static double[] IHVOver2D(Front d) throws JMException {
+/*		private static double[] IHVOver4D(Front d) throws JMException {
 		double[] ret = new double[d.size()];
 		WFGHV wfghv_ = new WFGHV(referencePoint_);
 
@@ -189,16 +189,15 @@ public class IHyperVolume  extends Indicator{
 			 Front test = new Front(d);
 			 test.remove(i);
 			 ret[i] = -1* wfghv_.wfg(test,referencePoint_,comparator_.get());
-			 wfghv_ = new WFGHV(referencePoint_);
-			 ret[i] += wfghv_.wfg(new Front(d), referencePoint_, comparator_.get());
+//			 wfghv_ = new WFGHV(referencePoint_);
+//			 ret[i] += wfghv_.wfg(new Front(d), referencePoint_, comparator_.get());
 
-			 assert !(ret[i] <- 1.0E-14) : ret[i];
+//			 assert !(ret[i] <- 1.0E-14) : ret[i];
 		}
 
 		return ret;
 	}
 */
-
 	public static List<Integer> getLowestContribution(double [] contribution_){
 		List<Integer> listContribution_ = new ArrayList<Integer>();
 

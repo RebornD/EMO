@@ -54,7 +54,7 @@ public class C3_DTLZ4 extends Problem{
     numberOfVariables_  = numberOfVariables;
     numberOfObjectives_ = numberOfObjectives;
     problemName_        = "C3_DTLZ4";
-    numberOfConstrain_ = numberOfObjectives;
+    numberOfConstraint_ = numberOfObjectives;
     lowerLimit_ = new double[numberOfVariables_];
     upperLimit_ = new double[numberOfVariables_];
     for (int var = 0; var < numberOfVariables_; var++){

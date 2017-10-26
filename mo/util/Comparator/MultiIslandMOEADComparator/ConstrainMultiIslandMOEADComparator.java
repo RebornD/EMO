@@ -25,9 +25,9 @@ public class ConstrainMultiIslandMOEADComparator extends MultiIslandMOEADCompara
 	public int execute(Object one, Object two) throws JMException {
 		Solution one_sol = (Solution)one;
 		Solution two_sol = (Solution)two;
-		assert one_sol.getnumberOfConstrain() == two_sol.getnumberOfConstrain() : "one Sslution has " + one_sol.getnumberOfConstrain() + " and the other has "  + two_sol.getnumberOfConstrain();
+		assert one_sol.getNumberOfConstraint() == two_sol.getNumberOfConstraint() : "one Sslution has " + one_sol.getNumberOfConstraint() + " and the other has "  + two_sol.getNumberOfConstraint();
 
-		if(one_sol.getnumberOfConstrain() == 0){
+		if(one_sol.getNumberOfConstraint() == 0){
 			double scalar_one = NowScalaringFunction_.execute(one_sol, weightedVector.get(), referencePoint.get());
 			double scalar_two = NowScalaringFunction_.execute(two_sol, weightedVector.get(), referencePoint.get());
 

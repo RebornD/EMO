@@ -94,7 +94,7 @@ public class Solution {
 	}
 
 
-	public int getnumberOfConstrain(){
+	public int getNumberOfConstraint(){
 		return numberOfConstrain_;
 	}
 	public int getnumberOfinfeasibleConstraint(){
@@ -259,7 +259,7 @@ public class Solution {
 		NumberOfDominatedSolution_ = a.getNumberOfDominatedSolution();
 		totalConstrain_ = a.gettotalConstrain();
 		feasibleSolution_ = a.getFeasible();
-		numberOfConstrain_ = a.getnumberOfConstrain();
+		numberOfConstrain_ = a.getNumberOfConstraint();
 		constrain_ = new double[numberOfConstrain_];
 		for(int i=0;i<numberOfConstrain_;i++){
 			constrain_[i] = a.getConstrain(i);

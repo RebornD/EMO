@@ -83,7 +83,7 @@ public class SMSEMOAMain extends AlgorithmMain{
 		System.out.println();
 		System.out.println(DirectoryName);
 
-		algorithm.setInputParameter("Norm",setting_.getAsBool("IsNorm"));
+		algorithm.setInputParameter("Norm",setting_.getAsBool("Norm"));
 		algorithm.setInputParameter("maxEvaluations", setting_.getAsInt("maxEvaluations"));
 		algorithm.setInputParameter("numberOfParents", 2);
 

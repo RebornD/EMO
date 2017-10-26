@@ -54,7 +54,7 @@ public class CF_DTLZ3 extends Problem{
     numberOfVariables_  = numberOfVariables;
     numberOfObjectives_ = numberOfObjectives;
     problemName_        = "CF_DTLZ3";
-    numberOfConstrain_ = 1;
+    numberOfConstraint_ = 1;
 
     lowerLimit_ = new double[numberOfVariables_];
     upperLimit_ = new double[numberOfVariables_];

@@ -166,6 +166,10 @@ public class MOPFactory {
 			return new WFG9(k,l,M);
 		}else if (name.equalsIgnoreCase("Knapsack")){
 			return new Knapsack(numberOfObj);
+		} else if (name.equalsIgnoreCase("Water")){
+			return new Water();
+		} else if (name.equalsIgnoreCase("CarSideImpact")){
+			return new CarSideImpact();
 		}
 /*		else if (name.equalsIgnoreCase("SinglePointCrossover"))
 			return new SinglePointCrossover(parameters);

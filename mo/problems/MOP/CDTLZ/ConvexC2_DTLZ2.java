@@ -54,7 +54,7 @@ public class ConvexC2_DTLZ2 extends Problem{
     numberOfVariables_  = numberOfVariables;
     numberOfObjectives_ = numberOfObjectives;
     problemName_        = "ConvecC2_DTLZ2";
-    numberOfConstrain_=1;
+    numberOfConstraint_=1;
     lowerLimit_ = new double[numberOfVariables_];
     upperLimit_ = new double[numberOfVariables_];
     for (int var = 0; var < numberOfVariables_; var++){

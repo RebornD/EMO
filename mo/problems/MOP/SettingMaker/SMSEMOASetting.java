@@ -17,8 +17,7 @@ public class SMSEMOASetting {
 		ret.add(l);
 		ret.add(M);
 
-		assert Problemname.equalsIgnoreCase("DTLZ1") :"設定まだしていない";
-
+		assert Problemname.equalsIgnoreCase("InvertedDTLZ1") || Problemname.equalsIgnoreCase("DTLZ1") :"設定まだしていない";
 
 		return ret;
 	}

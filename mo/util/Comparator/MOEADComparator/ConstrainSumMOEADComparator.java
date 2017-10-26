@@ -35,7 +35,7 @@ public class  ConstrainSumMOEADComparator extends MOEADComparator{
 	public int execute(Object one, Object two) throws JMException {
 		Solution one_sol = (Solution)one;
 		Solution two_sol = (Solution)two;
-		assert one_sol.getnumberOfConstrain() == two_sol.getnumberOfConstrain() : "one Sslution has " + one_sol.getnumberOfConstrain() + " and the other has "  + two_sol.getnumberOfConstrain();
+		assert one_sol.getNumberOfConstraint() == two_sol.getNumberOfConstraint() : "one Sslution has " + one_sol.getNumberOfConstraint() + " and the other has "  + two_sol.getNumberOfConstraint();
 		assert weightedVector != null  : "WeightedVector";
 		assert  referencePoint != null : "ReferencePoint";
 		double scalar_one = ScalaringFunction_.execute(one_sol, weightedVector.get(), referencePoint.get());

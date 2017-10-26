@@ -33,7 +33,7 @@ public class C1_DTLZ1 extends Problem {
 	 numberOfVariables_  = numberOfVariables;
     numberOfObjectives_ = numberOfObjectives;
     problemName_        = "C1_DTLZ1";
-    numberOfConstrain_ = 1;
+    numberOfConstraint_ = 1;
 
     lowerLimit_ = new double[numberOfVariables_];
     upperLimit_ = new double[numberOfVariables_];

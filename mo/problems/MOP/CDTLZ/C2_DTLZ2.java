@@ -55,7 +55,7 @@ public class C2_DTLZ2 extends Problem {
     problemName_        = "C2_DTLZ2";
 
 
-    numberOfConstrain_ = 1;
+    numberOfConstraint_ = 1;
 
 
     lowerLimit_ = new double[numberOfVariables_];

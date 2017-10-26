@@ -25,7 +25,7 @@ public class  ConstrainMOEADComparator extends MOEADComparator{
 		Solution two_sol = (Solution)two;
 		assert one_sol != null : "one Solution is null ";
 	    assert two_sol != null  : "two Solution is null ";
-		assert one_sol.getnumberOfConstrain() == two_sol.getnumberOfConstrain() : "one Sslution has " + one_sol.getnumberOfConstrain() + " and the other has "  + two_sol.getnumberOfConstrain();
+		assert one_sol.getNumberOfConstraint() == two_sol.getNumberOfConstraint() : "one Sslution has " + one_sol.getNumberOfConstraint() + " and the other has "  + two_sol.getNumberOfConstraint();
 		assert weightedVector != null  : "WeightedVector ";
 		assert  referencePoint != null : "ReferencePoint ";
 
