@@ -162,7 +162,7 @@ public class FmanyIslandMOEAD extends Algorithm {
 
 
 		for(int i=0;i<numberOfIsland_;i++){
-			ScalarzingFunction_[i] = ScalarzingFunctionFactory.getScalarzingFunctionOperator(ScalarzingFunctionName[i]);
+			ScalarzingFunction_[i] = ScalarzingFunctionFactory.getScalarzingFunctionOperator(ScalarzingFunctionName[i],(double)this.getInputParameter("PBITheta"));
 			comparator_[i] = new ConstrainMOEADComparator(null,ScalarzingFunction_[i]);
 			FunctionSelection_[i] = new ScalarFunctionSelection(null,comparator_[i]);
 		}

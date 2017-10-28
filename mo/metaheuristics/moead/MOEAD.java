@@ -113,7 +113,6 @@ public class MOEAD extends Algorithm {
 	int time;
 
 
-	private boolean outNormal_;
 	public Population execute() throws JMException, ClassNotFoundException {
 
 		Setting();
@@ -178,7 +177,7 @@ public class MOEAD extends Algorithm {
 		System.out.print(evaluations_ +"	");
 //		 NormalizationWithNadia();
 		//if (isNorm)Normalization();
-		if(outNormal_)population_.Normalization();
+	//	if(outNormal_)population_.Normalization();
 		population_.printVariablesToFile(directoryname + "/FinalVAR/FinalVAR" + time + ".dat");
 		population_.printObjectivesToFile(directoryname +  "/FinalFUN/FinalFUN" + time + ".dat");
 		return population_;
@@ -399,7 +398,9 @@ public class MOEAD extends Algorithm {
 		numberOfDivision_    = ((Integer)this.getInputParameter("numberOfDivision"));
 		numberofObjectives_    = ((Integer)this.getInputParameter("numberOfObjectives"));
 		time = ((Integer) this.getInputParameter("times")).intValue();
-		ScalarzingFunction_ = ScalarzingFunctionFactory.getScalarzingFunctionOperator(ScalarzingFunctionName);
+
+		ScalarzingFunction_ = ScalarzingFunctionFactory.getScalarzingFunctionOperator(ScalarzingFunctionName,(Double)this.getInputParameter("PBITheta"));
+
 		functionType_ = ScalarzingFunction_.getFunctionName();
 		comparator = new NomalMOEADComapator(null,ScalarzingFunction_);
 		evaluations_ = 0;
@@ -412,7 +413,7 @@ public class MOEAD extends Algorithm {
 		isInnerWeightVector_ = ((InnerWeightVectorDivision_ > 0));
 		populationSize_ = Calculator.conbination(numberofObjectives_-1 + numberOfDivision_ ,numberofObjectives_-1);
 
-		outNormal_ = ((boolean) this.getInputParameter("outputNormal"));
+	//	outNormal_ = ((boolean) this.getInputParameter("outputNormal"));
 
 		isMax    = ((boolean)this.getInputParameter("IsMax"));
 		isNorm = ((boolean)this.getInputParameter("IsNorm"));

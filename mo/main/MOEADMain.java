@@ -78,9 +78,16 @@ public class MOEADMain extends AlgorithmMain{
 		algorithm = new MOEAD(problem);
 
 		String dddname = problem.getNumberOfObjectives()  + "OBJ" + setting_.getAsInt("Division") + "div";
+		//上書きはしないため，本来持っている値は消えない．
+		setting_.add("PBITheta",-1000000);
+		algorithm.setInputParameter("PBITheta", setting_.getAsDouble("PBITheta"));
 
+		if(setting_.getAsStr("ScalarFunction").startsWith("PBI")){
+			DirectoryName = "result/MOEAD/" + Problemname+"/"+dddname + "/" + setting_.getAsStr("ScalarFunction")+setting_.getAsStr("PBITheta").replace(".","_");
+		}else {
+			DirectoryName = "result/MOEAD/" + Problemname+"/"+dddname + "/" + setting_.getAsStr("ScalarFunction");
+		}
 
-		DirectoryName = "result/MOEAD/" + Problemname+"/"+dddname + "/" + setting_.getAsStr("ScalarFunction");
 		algorithm.setInputParameter("DirectoryName",  DirectoryName);
 		System.out.println();
 		System.out.println(DirectoryName);
@@ -109,6 +116,10 @@ public class MOEADMain extends AlgorithmMain{
 		}
 		System.out.println(NumberOfRun);
 		algorithm.setInputParameter("ScalarzingFunctionName", setting_.getAsStr("ScalarFunction"));
+
+
+
+
 		algorithm.setInputParameter("numberOfObjectives",setting_.getAsInt("Objectives"));// Boolean.valueOf((String)(experiment_setting_.get("isNorm"))));
 
 

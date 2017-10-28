@@ -170,7 +170,7 @@ public class mu_mu_MOEAD extends Algorithm {
 
 
 		for(int i=0;i<numberOfIsland_;i++){
-			ScalarzingFunction_[i] = ScalarzingFunctionFactory.getScalarzingFunctionOperator(ScalarzingFunctionName[i]);
+			ScalarzingFunction_[i] = ScalarzingFunctionFactory.getScalarzingFunctionOperator(ScalarzingFunctionName[i],(double)this.getInputParameter("PBITheta"));
 			comparator_[i] = new ConstrainSumMOEADComparator(null, ScalarzingFunction_[i], para_[i]);
 			FunctionSelection_[i] = new ScalarFunctionSelection(null,comparator_[i]);
 		}

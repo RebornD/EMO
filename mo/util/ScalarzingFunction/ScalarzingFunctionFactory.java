@@ -5,8 +5,7 @@ import mo.util.JMException;
 
 public class ScalarzingFunctionFactory {
 
-	public static ScalarzingFunction getScalarzingFunctionOperator(String name) throws JMException {
-
+	public static ScalarzingFunction getScalarzingFunctionOperator(String name,double theta) throws JMException {
 
 		if (name.equalsIgnoreCase("WeightedSum"))
 			return new WeightedSum();
@@ -17,11 +16,11 @@ public class ScalarzingFunctionFactory {
 		else if (name.equalsIgnoreCase("TchebycheffForMin"))
 			return new TchebycheffForMin();
 		else if (name.equalsIgnoreCase("PBI") )
-			return new PBI(5);
+			return new PBI(theta);
 		else if (name.equalsIgnoreCase("PBIForMin") )
-			return new PBIForMin(5);
+			return new PBIForMin(theta);
 		else if (name.equalsIgnoreCase("InvertedPBIForMin") )
-			return new InvertedPBIForMIN(5);
+			return new InvertedPBIForMIN(theta);
 		else {
 			Configuration.logger_.severe("Operator '" + name + "' not found ");
 			Class cls = java.lang.String.class;
@@ -29,17 +28,5 @@ public class ScalarzingFunctionFactory {
 			throw new JMException("Exception in " + name2 + ".getScalarzingFunctinoOperator()");
 		}
 	}
-	//PBIようの関数
-	public static ScalarzingFunction getScalarzingFunctionOperator(String name,double theata) throws JMException {
 
-
-		if (name.equalsIgnoreCase("PBI"))
-			return new PBI(theata);
-		else {
-			Configuration.logger_.severe("Operator '" + name + "' not found ");
-			Class cls = java.lang.String.class;
-			String name2 = cls.getName();
-			throw new JMException("Exception in " + name2 + ".getScalarzingFunctinoOperator()");
-		}
-	}
 }

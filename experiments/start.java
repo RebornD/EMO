@@ -90,6 +90,9 @@ public class start {
 	private double epsiron = - 1;
 	@Option(name="-dir", aliases= "--Directory", required=false, usage="Specify the Directory storing Directory")
 	private String Directory = null;
+	@Option(name="-PBITheta", aliases= "--PBITheta", required=false, usage="Specify the parameter of the scalarzing function PBI used in MOEAD")
+	private double PBITheta = -1;
+
 	@Argument
 	private List<String> arguments;
 
@@ -156,6 +159,7 @@ public class start {
         if(Objectives != -1) hashmap.add("Objectives", Objectives);
         if(Objectives != -1) hashmap.add("numberOfObjectives", Objectives);
         if(ref != null) hashmap.add("ref", ref);
+        if(PBITheta != -1)hashmap.add("PBITheta", PBITheta);
         if(ScalarFunction != null) {
         	if(!IsMax)hashmap.add("ScalarFunction", ScalarFunction + "Formin");
         	else

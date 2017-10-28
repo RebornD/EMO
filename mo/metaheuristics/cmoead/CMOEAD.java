@@ -118,7 +118,7 @@ public class CMOEAD extends Algorithm {
 		numberofObjectives_    = ((Integer)this.getInputParameter("numberOfObjectives"));
 		boolean ismax    = ((boolean)this.getInputParameter("ismax"));
 		int time = ((Integer) this.getInputParameter("times")).intValue();
-		ScalarzingFunction_ = ScalarzingFunctionFactory.getScalarzingFunctionOperator(ScalarzingFunctionName);
+		ScalarzingFunction_ = ScalarzingFunctionFactory.getScalarzingFunctionOperator(ScalarzingFunctionName,(double)this.getInputParameter("PBITheta"));
 		functionType_ = ScalarzingFunction_.getFunctionName();
 		comparator = new ConstrainSumMOEADComparator(null,ScalarzingFunction_);
 		comparator.setIs(ismax);

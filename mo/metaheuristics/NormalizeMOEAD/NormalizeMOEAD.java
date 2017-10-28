@@ -350,8 +350,8 @@ public class NormalizeMOEAD extends Algorithm {
 		comparator.setMaxPoint(max);
 		comparator.setMinPoint(min);
 		population_.pop();
-		
-		
+
+
 		for (int i = 0; i < size; i++) {
 			int k;
 			k = neighborhood_[id][perm[i]];
@@ -372,7 +372,7 @@ public class NormalizeMOEAD extends Algorithm {
 		numberOfDivision_    = ((Integer)this.getInputParameter("numberOfDivision"));
 		numberofObjectives_    = ((Integer)this.getInputParameter("numberOfObjectives"));
 		time = ((Integer) this.getInputParameter("times")).intValue();
-		ScalarzingFunction_ = ScalarzingFunctionFactory.getScalarzingFunctionOperator(ScalarzingFunctionName);
+		ScalarzingFunction_ = ScalarzingFunctionFactory.getScalarzingFunctionOperator(ScalarzingFunctionName,(double)this.getInputParameter("PBITheta"));
 		functionType_ = ScalarzingFunction_.getFunctionName();
 		comparator = new NormalizeMOEAComparator(null,ScalarzingFunction_);
 		evaluations_ = 0;

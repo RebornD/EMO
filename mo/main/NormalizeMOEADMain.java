@@ -79,8 +79,14 @@ public class NormalizeMOEADMain extends AlgorithmMain{
 
 		String dddname = problem.getNumberOfObjectives()  + "OBJ" + setting_.getAsInt("Division") + "div"+"ep" + setting_.getAsStr("epsilon");
 
-
-		DirectoryName = "result/NormalizeMOEAD/" + Problemname+"/"+dddname + "/" + setting_.getAsStr("ScalarFunction");
+		setting_.add("PBITheta",-1000000);
+		algorithm.setInputParameter("PBITheta", setting_.getAsDouble("PBITheta"));
+		if(setting_.getAsStr("ScalarFunction").startsWith("PBI")){
+			System.out.println(setting_.getAsStr("PBITheta").replace(".","_"));
+			DirectoryName = "result/NormalizeMOEAD/" + Problemname+"/"+dddname + "/" + setting_.getAsStr("ScalarFunction")+setting_.getAsStr("PBITheta").replace(".","_");
+		}else {
+			DirectoryName = "result/NormalizeMOEAD/" + Problemname+"/"+dddname + "/" + setting_.getAsStr("ScalarFunction");
+		}
 		algorithm.setInputParameter("DirectoryName",  DirectoryName);
 		System.out.println();
 		System.out.println(DirectoryName);
@@ -126,7 +132,7 @@ public class NormalizeMOEADMain extends AlgorithmMain{
 		algorithm.setInputParameter("sizeOfNeiborhoodRepleaced_",setting_.getAsInt("matingNeighborhood"));
 		algorithm.setInputParameter("sizeOfMatingNeiborhood_",setting_.getAsInt("ReplaceNeighborhood"));
 
-		algorithm.setInputParameter("outputNormal",setting_.getAsBool("outputNormal"));
+	//	algorithm.setInputParameter("outputNormal",setting_.getAsBool("outputNormal"));
 
 		algorithm.addOperator("crossover", crossover);
 		algorithm.addOperator("mutation", mutation);
