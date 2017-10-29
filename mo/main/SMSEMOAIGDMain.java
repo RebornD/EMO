@@ -37,12 +37,12 @@ public class SMSEMOAIGDMain extends AlgorithmMain{
 		HashMap parameters; // Operator parameters
 		HashMap d = new HashMap();
 		d.put("numberOfObjectives",OBJ);
-		problem = MOPFactory.getMOP(Problemname,d,"SMSEMOAIGD");
+		problem = MOPFactory.getMOP(Problemname,setting_,"SMSEMOAIGD");
 		algorithm = new SMSEMOAIGD(problem);
 		algorithm.setInputParameter("numberOfObjectives",OBJ);
 		algorithm.setInputParameter("populationSize", setting_.getAsInt("populationSize"));
 		String dddname = problem.getNumberOfObjectives()  + "OBJ" + "/pop" +  setting_.getAsInt("populationSize");
-		
+
 
 		//		double[][] ref = fileReading(setting_.getAsStr("reffile"));
 //		algorithm.setInputParameter("ref", ref);

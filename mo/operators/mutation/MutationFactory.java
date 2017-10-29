@@ -18,7 +18,7 @@ public class MutationFactory {
 	 */
 	public static Mutation getMutationOperator(String name, HashMap parameters) throws JMException {
 
-		if (name.equalsIgnoreCase("PolynomialMutation"))
+		if (name.equalsIgnoreCase("PolynomialMutation")||name.equalsIgnoreCase("PolynominalMutation"))
 			return new PolynomialMutation(parameters);
 		else if (name.equalsIgnoreCase("BitFlipMutation")){
 			return new BitFlipMutation(parameters);

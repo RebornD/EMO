@@ -34,7 +34,6 @@ import mo.core.Operator;
 import mo.core.Problem;
 import mo.operators.crossover.CrossoverFactory;
 import mo.operators.mutation.MutationFactory;
-import mo.problems.MOP.MOPFactory;
 import mo.util.Configuration;
 import mo.util.JMException;
 import mo.util.Random;
@@ -123,9 +122,9 @@ public class MOEAD_main {
 		int numberOfObj = Integer.parseInt(nobk);
 		int  numberOfdivision = Integer.parseInt(nod);
 
-		
 
-        Problem problem; // The problem to solve
+
+		Problem problem = null; // The problem to solve
 		Algorithm algorithm; // The algorithm to use
 		Operator crossover; // Crossover operator
 		Operator mutation; // Mutation operator
@@ -143,7 +142,7 @@ public class MOEAD_main {
 		HashMap d = new HashMap();
 
 		d.put("numberOfObjectives",numberOfObj);
-		problem = MOPFactory.getMOP(Problemname,d,"MOEAD");
+		//problem = MOPFactory.getMOP(Problemname,d,"MOEAD");
 		algorithm = new MOEAD(problem);
 
 		algorithm.setInputParameter("numberOfObjectives",numberOfObj);

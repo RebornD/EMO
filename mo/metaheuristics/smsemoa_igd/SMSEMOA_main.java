@@ -35,7 +35,6 @@ import mo.core.Population;
 import mo.core.Problem;
 import mo.operators.crossover.CrossoverFactory;
 import mo.operators.mutation.MutationFactory;
-import mo.problems.MOP.MOPFactory;
 import mo.util.JMException;
 import mo.util.Random;
 
@@ -85,7 +84,7 @@ public class SMSEMOA_main {
 		int NumberOfRun = 10;
 		int numberOfObj = Integer.parseInt(nobk);
 
-        Problem problem; // The problem to solve
+     //   Problem problem; // The problem to solve
 		Algorithm algorithm; // The algorithm to use
 		Operator crossover; // Crossover operator
 		Operator mutation; // Mutation operator
@@ -94,7 +93,7 @@ public class SMSEMOA_main {
 
 		HashMap d = new HashMap();
 		d.put("numberOfObjectives",numberOfObj);
-		problem = MOPFactory.getMOP(Problemname,d,"SMSEMOA");
+        Problem problem = null; // The problem to solve
 
 		algorithm = new SMSEMOAIGD(problem);
 		String problemname = problem.getName();

@@ -71,8 +71,6 @@ public class SettingWriter {
 		oneScript(test,"populationSize");
 		oneScript(test,"Seed");
 
-
-
 	}
 
 	private static void oneScript(BufferedWriter br,String name) throws IOException{

@@ -33,12 +33,12 @@ public class Population {
 
 	int getCapacity(){return capacity;}
 
-	
+
 	private final Random random = new Random();
 
-	
-	
-	
+
+
+
 	public int getNumberOfD(){
 		return nOfD_;
 	}
@@ -53,7 +53,7 @@ public class Population {
 
 	public Population(int d){
 		population_ = new Solution[d];
-		capacity = d+1;
+		capacity = d+10;
 		populationSize =0;
 	}
 

@@ -73,7 +73,7 @@ public class NormalizeMOEADMain extends AlgorithmMain{
 
 		d.put("numberOfObjectives",OBJ);
 
-		problem = MOPFactory.getMOP(Problemname,d,"MOEAD");
+		problem = MOPFactory.getMOP(Problemname,setting_,"MOEAD");
 
 		algorithm = new  NormalizeMOEAD(problem);
 

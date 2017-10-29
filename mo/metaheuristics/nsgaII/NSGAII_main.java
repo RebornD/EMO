@@ -15,7 +15,6 @@ import mo.core.Population;
 import mo.core.Problem;
 import mo.operators.crossover.CrossoverFactory;
 import mo.operators.mutation.MutationFactory;
-import mo.problems.MOP.MOPFactory;
 import mo.util.Configuration;
 import mo.util.JMException;
 import mo.util.Random;
@@ -80,8 +79,8 @@ public class NSGAII_main {
 		int OBJ = Integer.parseInt(nobk);
 		int NumberOfRun = 101;
 
-        Problem problem; // The problem to solve
-		Algorithm algorithm; // The algorithm to use
+	    Problem problem = null; // The problem to solve
+	    Algorithm algorithm; // The algorithm to use
 		Operator crossover; // Crossover operator
 		Operator mutation; // Mutation operator
 
@@ -89,8 +88,8 @@ public class NSGAII_main {
 
 		HashMap d = new HashMap();
 		d.put("numberOfObjectives",OBJ);
-
-		problem = MOPFactory.getMOP(Problemname,d,"NSGAII");
+//	      Problem problem = null; // The problem to solve
+//		problem = MOPFactory.getMOP(Problemname,d,"NSGAII");
 
 		algorithm = new NSGAII(problem);
 

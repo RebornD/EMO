@@ -28,6 +28,8 @@ import java.util.HashMap;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
+import javax.naming.NameNotFoundException;
+
 import experiments.SettingWriter;
 import mo.core.Algorithm;
 import mo.core.Operator;
@@ -74,7 +76,7 @@ public class SMSEMOA_main {
 			}
 	}
 
-	public static void main(String[] args) throws JMException, SecurityException, IOException, ClassNotFoundException {
+	public static void main(String[] args) throws JMException, SecurityException, IOException, ClassNotFoundException, NameNotFoundException {
 		// this value has the name of weight vector data
 		experiment_setting("setting/SMSEMOA.st");
 		String knapsackfileName;
@@ -95,7 +97,7 @@ public class SMSEMOA_main {
 
 		HashMap d = new HashMap();
 		d.put("numberOfObjectives",numberOfObj);
-		problem = MOPFactory.getMOP(Problemname,d,"SMSEMOA");
+		problem = MOPFactory.getMOP(Problemname,null,"SMSEMOA");
 
 		algorithm = new ParallelSMSEMOA(problem);
 		String problemname = problem.getName();

@@ -288,10 +288,8 @@ public class NormalizeMOEAD extends Algorithm {
 		boolean flag;
 		ss = sizeOfMatingNeiborhood_;
 		while (list.size() < size) {
-
 				r = Random.nextIntIE(ss);
 				p = neighborhood_[cid][r];
-
 				// p = population[cid].table[r];
 			flag = true;
 			for (int i = 0; i < list.size(); i++) {
@@ -354,12 +352,16 @@ public class NormalizeMOEAD extends Algorithm {
 
 		for (int i = 0; i < size; i++) {
 			int k;
+			
 			k = neighborhood_[id][perm[i]];
+			
 			comparator.setWeightedVector(WeightedVector_[k]);
 			comparator.setRefernecePoint(ReferencePoint_);
+			
 			if (comparator.execute(indiv, population_.get(k)) != -1) {
 				population_.replace(k, (indiv));
 			}
+			
 		}
 	} // updateProblem
 
@@ -385,7 +387,7 @@ public class NormalizeMOEAD extends Algorithm {
 		isInnerWeightVector_ = ((InnerWeightVectorDivision_ > 0));
 		populationSize_ = Calculator.conbination(numberofObjectives_-1 + numberOfDivision_ ,numberofObjectives_-1);
 
-		outNormal_ = ((boolean) this.getInputParameter("outputNormal"));
+	//	outNormal_ = ((boolean) this.getInputParameter("outputNormal"));
 		isMAX_    = ((boolean)this.getInputParameter("IsMax"));
 		isNorm = ((boolean)this.getInputParameter("IsNorm"));
 		comparator.setIs(isMAX_);
@@ -409,7 +411,7 @@ public class NormalizeMOEAD extends Algorithm {
 		nonDominatedSols = new ArrayList<Solution>();
 		dominationComparator = new DominationComparator(isMAX_);
 		comparator.setMaxPoint(MaxPoint);
-		comparator.setMaxPoint(MinPoint);
+		comparator.setMinPoint(MinPoint);
 		comparator.setEpsilon( (double)((this).getInputParameter("epsilon")));
 	}
 

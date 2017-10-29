@@ -37,7 +37,7 @@ public class NSGAIIMain extends AlgorithmMain{
 		HashMap parameters; // Operator parameters
 		HashMap d = new HashMap();
 		d.put("numberOfObjectives",OBJ);
-		problem = MOPFactory.getMOP(Problemname,d,"NSGAII");
+		problem = MOPFactory.getMOP(Problemname,setting_,"NSGAII");
 		algorithm = new NSGAII(problem);
 		String dddname = problem.getNumberOfObjectives()  + "OBJ";
 		algorithm.setInputParameter("populationSize", setting_.getAsInt("populationSize"));

@@ -35,7 +35,7 @@ public class NSGAIIIMain extends AlgorithmMain{
 		HashMap parameters; // Operator parameters
 		HashMap d = new HashMap();
 		d.put("numberOfObjectives",OBJ);
-		problem = MOPFactory.getMOP(Problemname,d,"NSGAIII");
+		problem = MOPFactory.getMOP(Problemname,setting_,"NSGAIII");
 		algorithm = new NSGAIII(problem);
 
 

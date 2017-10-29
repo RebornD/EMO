@@ -32,10 +32,12 @@ public class NormalizeMOEAComparator extends MOEADComparator {
 		double[] refs = new double[solone.getNumberOfObjectives()];
 
 
+		// unspecification
+		// the i th objective value  does not always equal to min point of the non dominated solution set
 		for(int obj =0; obj < solone.getNumberOfObjectives();obj++){
 			soloneDouble[obj] = (solone.getObjective(obj) - Min[obj])/(Max[obj] - Min[obj] + epsilon);
 			soltwoDouble[obj] = (soltwo.getObjective(obj)- Min[obj])/(Max[obj] - Min[obj] + epsilon);
-			refs[obj] =0;
+			refs[obj] =0;//(referencePoint.get(obj)- Min[obj])/((Max[obj] - Min[obj] + epsilon));
 		}
 		double scalar_one = 0;
 		double scalar_two = 0;
@@ -47,8 +49,8 @@ public class NormalizeMOEAComparator extends MOEADComparator {
 //		scalar_two = ScalaringFunction_.execute(soltwo, weightedVector.get(), referencePoint.get());
 
 
-		assert scalar_one > 0;
-		assert scalar_two > 0;
+		assert scalar_one >= 0 :scalar_one;
+		assert scalar_two >= 0:scalar_two;
 		if (isMAX_== (scalar_one > scalar_two)){
 			return 1;
 		} else if  (isMAX_== (scalar_one < scalar_two)){

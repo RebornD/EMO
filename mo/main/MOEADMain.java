@@ -73,7 +73,7 @@ public class MOEADMain extends AlgorithmMain{
 
 		d.put("numberOfObjectives",OBJ);
 
-		problem = MOPFactory.getMOP(Problemname,d,"MOEAD");
+		problem = MOPFactory.getMOP(Problemname,setting_,"MOEAD");
 
 		algorithm = new MOEAD(problem);
 
@@ -136,7 +136,7 @@ public class MOEADMain extends AlgorithmMain{
 		algorithm.setInputParameter("sizeOfNeiborhoodRepleaced_",setting_.getAsInt("matingNeighborhood"));
 		algorithm.setInputParameter("sizeOfMatingNeiborhood_",setting_.getAsInt("ReplaceNeighborhood"));
 
-		algorithm.setInputParameter("outputNormal",setting_.getAsBool("outputNormal"));
+		algorithm.setInputParameter("outputNormal",false);
 
 		algorithm.addOperator("crossover", crossover);
 		algorithm.addOperator("mutation", mutation);

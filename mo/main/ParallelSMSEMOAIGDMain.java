@@ -37,7 +37,7 @@ public class ParallelSMSEMOAIGDMain extends AlgorithmMain{
 		HashMap parameters; // Operator parameters
 		HashMap d = new HashMap();
 		d.put("numberOfObjectives",OBJ);
-		problem = MOPFactory.getMOP(Problemname,d,"SMSEMOAIGD");
+		problem = MOPFactory.getMOP(Problemname,setting_,"SMSEMOAIGD");
 		algorithm = new ParallelSMSEMOAIGD(problem);
 		algorithm.setInputParameter("numberOfObjectives",OBJ);
 		algorithm.setInputParameter("populationSize", setting_.getAsInt("populationSize"));
@@ -70,7 +70,7 @@ public class ParallelSMSEMOAIGDMain extends AlgorithmMain{
 		}
 		algorithm.setInputParameter("nCPU", cpu);
 
-		
+
 		try {
 			mutation = MutationFactory.getMutationOperator(setting_.getAsStr("MutationName"), parameters);
 		} catch (JMException e) {

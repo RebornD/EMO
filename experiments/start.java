@@ -80,12 +80,14 @@ public class start {
 	private int matingNeighborhood = - 1;
 	@Option(name="-rn", aliases= "--replace Neighborhood", required=false, usage="Specify MOEAD replace neighborhood")
 	private int ReplaceNeighborhood = - 1;
-	@Option(name="-ndv", aliases= "--Number of Distance variables", required=false, usage="Specify the number of the distance variabels on DTLZ Problem")
-	private int NumberOfVariables_ = - 1;
-	@Option(name="-wfgk", aliases= "--Number of position variables", required=false, usage="Specify the number of the position variables on WFG Problem")
-	private int k = - 1;
-	@Option(name="-wfgl", aliases= "--Number of distance variables", required=false, usage="Specify the number of the distance variables on WFG Problem")
-	private int l = - 1;
+	@Option(name="-dtlzD", aliases= "--Number of Distance variables", required=false, usage="Specify the number of the distance variabels on DTLZ Problem")
+	private int dtlzD = - 1;
+	@Option(name="-wfgK", aliases= "--Number of value of K in WFG", required=false, usage="Specify the value of  K in WFG")
+	private int wfgK = - 1;
+	@Option(name="-wfgL", aliases= "--Number of value of L in WFG", required=false, usage="Specify the value of  L in WFG")
+	private int wfgL = - 1;
+	@Option(name="-wfgM", aliases= "--Number of value of M in WFG", required=false, usage="Specify the value of M in WFG")
+	private int wfgM = - 1;
 	@Option(name="-ep", aliases= "--Epsilon", required=false, usage="Specify the Epsilon on NormalizeObjectives")
 	private double epsiron = - 1;
 	@Option(name="-dir", aliases= "--Directory", required=false, usage="Specify the Directory storing Directory")
@@ -141,9 +143,9 @@ public class start {
         System.out.println(maxEvaluations_ + "	");
 
 
-        hashmap.add("IsMax", IsMax);
-        hashmap.add("IsNorm", IsNorm);
-        hashmap.add("outputNormal", OutNorm);
+       hashmap.add("IsMax", IsMax);
+       hashmap.add("IsNorm", IsNorm);
+//      hashmap.add("outputNormal", OutNorm);
 
         if(epsiron != -1) hashmap.add("epsilon", epsiron);
         if(populationSize != -1) hashmap.add("populationSize", populationSize);
@@ -165,9 +167,11 @@ public class start {
         	else
         		hashmap.add("ScalarFunction", ScalarFunction);
         }
-        if(k != -1) hashmap.add("k", k);
-        if(l != -1) hashmap.add("l", l);
-        if(NumberOfVariables_ != -1) hashmap.add("NumberOfVariables", NumberOfVariables_);
+        if(wfgK != -1) hashmap.add("wfgK", wfgK);
+        if(wfgL != -1) hashmap.add("wfgL", wfgL);
+        if(wfgM != -1) hashmap.add("wfgM", wfgM);
+        if(dtlzD != -1) hashmap.add("dtlzD", dtlzD);
+
         if(alphar != -1) hashmap.add("alpha", alphar);
         if(matingNeighborhood !=-1) hashmap.add("matingNeighborhood", matingNeighborhood);
         if(ReplaceNeighborhood !=-1) hashmap.add("ReplaceNeighborhood", ReplaceNeighborhood);

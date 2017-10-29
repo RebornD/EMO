@@ -1,7 +1,4 @@
 package mo.problems.MOP;
-import java.util.HashMap;
-import java.util.List;
-
 import javax.naming.NameNotFoundException;
 
 import experiments.Setting;
@@ -38,10 +35,8 @@ import mo.problems.MOP.InvertedWFG.InvertedWFG6;
 import mo.problems.MOP.InvertedWFG.InvertedWFG7;
 import mo.problems.MOP.InvertedWFG.InvertedWFG8;
 import mo.problems.MOP.InvertedWFG.InvertedWFG9;
-import mo.problems.MOP.NDTLZ.NormalizeDTLZ1;
 import mo.problems.MOP.ScaledDTLZ.ScaledDTLZ1;
 import mo.problems.MOP.ScaledDTLZ.ScaledDTLZ2;
-import mo.problems.MOP.SettingMaker.Settingpublisher;
 import mo.problems.MOP.WFG.WFG1;
 import mo.problems.MOP.WFG.WFG2;
 import mo.problems.MOP.WFG.WFG3;
@@ -55,6 +50,7 @@ import mo.util.Configuration;
 import mo.util.JMException;
 
 public class MOPFactory {
+/*
 	public static Problem getMOP(String name,HashMap<String, Object> parameters,String Algorithmname) throws JMException, ClassNotFoundException {
 		int k=-1,l=-1,M=-1,numberOfVariables_=-1,numberOfObj=-1;
 		String algo = Algorithmname;
@@ -171,7 +167,7 @@ public class MOPFactory {
 		} else if (name.equalsIgnoreCase("CarSideImpact")){
 			return new CarSideImpact();
 		}
-/*		else if (name.equalsIgnoreCase("SinglePointCrossover"))
+		else if (name.equalsIgnoreCase("SinglePointCrossover"))
 			return new SinglePointCrossover(parameters);
 		else if (name.equalsIgnoreCase("PMXCrossover"))
 			return new PMXCrossover(parameters);
@@ -183,26 +179,48 @@ public class MOPFactory {
 			return new DifferentialEvolutionCrossover(parameters);
 		else if (name.equalsIgnoreCase("BLXAlphaCrossover"))
 			return new BLXAlphaCrossover(parameters);
-		}*/ else{
+		} else{
 			Configuration.logger_
 					.severe("CrossoverFactory.getProblem. " + " Problem '" + name + "' not found ");
 			throw new JMException("Exception in " + name + ".getCrossoverOperator()");
 		} // else
 	} // getCrossoverOperator
+	*/
 	public static Problem getMOP(String name,Setting parameters,String Algorithmname) throws JMException, ClassNotFoundException, NameNotFoundException {
-		int k=-1,l=-1,M=-1,par_=-1,numberOfObj=-1;
+		int k=-1,l=-1,M=-1,par_=-1,numberOfObj=-1,numberOfVariables=-1;
 		String algo = Algorithmname;
 
-		if (parameters.containsKey("numberOfObjectives")){
-			numberOfObj =parameters.getAsInt("numberOfObjectives");
+
+		numberOfObj = parameters.getAsInt("numberOfObjectives");
+
+
+		if (name.contains("WFG")){
+			k = parameters.getAsInt("wfgK");
+			l = parameters.getAsInt("wfgL");
+			M = parameters.getAsInt("wfgM");
+			if (M != numberOfObj){
+				System.out.println("error");
+				parameters.add("error","True");
+				SettingWriter.clear();
+				SettingWriter.merge(parameters.get());
+				SettingWriter.write("Setting/setting.st");
+				System.exit(1);
+			}
+		} else if (name.contains("DTLZ")){
+			int distanceVaribales = parameters.getAsInt("dtlzD");
+			numberOfVariables = distanceVaribales + numberOfObj -1;
 		}
 
-		List<Integer> ret = Settingpublisher.getprograming(algo,name , numberOfObj);
-		parameters.add("numberOfObjectives", numberOfObj);
-		parameters.add("numberOfVariables", ret.get(1));
-		parameters.add("k", ret.get(2));
-		parameters.add("l", ret.get(3));
-		parameters.add("M", ret.get(4));
+
+//		List<Integer> ret = Settingpublisher.getprograming(algo,name , numberOfObj);
+//		parameters.add("numberOfObjectives", numberOfObj);
+//		parameters.add("numberOfVariables", ret.get(1));
+//		parameters.add("k", ret.get(2));
+//		parameters.add("l", ret.get(3));
+//		parameters.add("M", ret.get(4));
+
+
+
 
 		/*SettingWriter.add("ProblemSttingname", algo);
 		SettingWriter.add("numberOfObj", numberOfObj);
@@ -212,55 +230,55 @@ public class MOPFactory {
 		SettingWriter.add("M", M);
 */
 		if (name.equalsIgnoreCase("DTLZ1")){
-			return new DTLZ1(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new DTLZ1(numberOfVariables,numberOfObj);
 		} else if (name.equalsIgnoreCase("DTLZ2")){
-			return new DTLZ2(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new DTLZ2(numberOfVariables,numberOfObj);
 		}	else if (name.equalsIgnoreCase("DTLZ3")){
-			return new DTLZ3(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new DTLZ3(numberOfVariables,numberOfObj);
 		}	else if (name.equalsIgnoreCase("DTLZ4")){
-			return new DTLZ4(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new DTLZ4(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("DTLZ5")){
-			return new DTLZ5(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new DTLZ5(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("DTLZ6")){
-			return new DTLZ6(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new DTLZ6(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("DTLZ7")){
-			return new DTLZ7(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new DTLZ7(numberOfVariables,numberOfObj);
 		} else if (name.equalsIgnoreCase("ScaledDTLZ1")){
-			return new ScaledDTLZ1(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new ScaledDTLZ1(numberOfVariables,numberOfObj);
 		} else if (name.equalsIgnoreCase("ScaledDTLZ2")){
-			return new ScaledDTLZ2(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new ScaledDTLZ2(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("InvertedDTLZ1")){
-			return new InvertedDTLZ1(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new InvertedDTLZ1(numberOfVariables,numberOfObj);
 		} else if (name.equalsIgnoreCase("InvertedDTLZ2")){
-			return new InvertedDTLZ2(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new InvertedDTLZ2(numberOfVariables,numberOfObj);
 		}	else if (name.equalsIgnoreCase("InvertedDTLZ3")){
-			return new InvertedDTLZ3(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new InvertedDTLZ3(numberOfVariables,numberOfObj);
 		}	else if (name.equalsIgnoreCase("InvertedDTLZ4")){
-			return new InvertedDTLZ4(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new InvertedDTLZ4(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("InvertedDTLZ5")){
-			return new InvertedDTLZ5(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new InvertedDTLZ5(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("InvertedDTLZ6")){
-			return new InvertedDTLZ6(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new InvertedDTLZ6(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("InvertedDTLZ7")){
-			return new InvertedDTLZ7(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new InvertedDTLZ7(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("ConvexDTLZ2")){
-			return new ConvexDTLZ2(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new ConvexDTLZ2(numberOfVariables,numberOfObj);
 		}  else if (name.equalsIgnoreCase("C1_DTLZ1")){
-			return new C1_DTLZ1(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new C1_DTLZ1(numberOfVariables,numberOfObj);
 		} else if (name.equalsIgnoreCase("C1_DTLZ3")){
-			return new C1_DTLZ3(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new C1_DTLZ3(numberOfVariables,numberOfObj);
 		}	else if (name.equalsIgnoreCase("CF_DTLZ3")){
-			return new CF_DTLZ3(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new CF_DTLZ3(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("C2_DTLZ2")){
-			return new C2_DTLZ2(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new C2_DTLZ2(numberOfVariables,numberOfObj);
 		}	else if (name.equalsIgnoreCase("C3_DTLZ1")){
-			return new C3_DTLZ1(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new C3_DTLZ1(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("C3_DTLZ4")){
-			return new C3_DTLZ4(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new C3_DTLZ4(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("ConvexC2_DTLZ2")){
-			return new ConvexC2_DTLZ2(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new ConvexC2_DTLZ2(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("ConvexDTLZ2")){
-			return new ConvexDTLZ2(parameters.getAsInt("numberOfVariables"),parameters.getAsInt("numberOfObjectives"));
+			return new ConvexDTLZ2(numberOfVariables,numberOfObj);
 		}   else 	if (name.equalsIgnoreCase("InvertedWFG1")){
 			return new InvertedWFG1(k,l,M);
 		} else if (name.equalsIgnoreCase("InvertedWFG2")){
