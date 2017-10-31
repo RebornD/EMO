@@ -92,7 +92,8 @@ public class NSGAII extends Algorithm {
 		comparator_nextGen.setIs(isMAX_);
 		comparator_Dominance.setIs(isMAX_);
 		selection_ = new BinaryTournament(null,comparator_binary);
-		outNormal_ = ((boolean) this.getInputParameter("outputNormal"));
+	//	outNormal_ = ((boolean) this.getInputParameter("outputNormal"));
+		outNormal_ = false;
 		directoryname = ((String) this.getInputParameter("DirectoryName"));
 		generation=0;
 		populationSize_ = ((Integer)this.getInputParameter("populationSize"));

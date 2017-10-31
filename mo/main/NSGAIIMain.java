@@ -51,7 +51,7 @@ public class NSGAIIMain extends AlgorithmMain{
 		parameters = new HashMap();
 		parameters.put("Mutationprobability",setting_.getAsDouble("MutationProbability"));
 		parameters.put("MutationdistributionIndex",setting_.getAsDouble("MutationDistribution"));
-		algorithm.setInputParameter("outputNormal",setting_.getAsBool("outputNormal"));
+//		algorithm.setInputParameter("outputNormal",setting_.getAsBool("outputNormal"));
 
 		try {
 			mutation = MutationFactory.getMutationOperator(setting_.getAsStr("MutationName"), parameters);
