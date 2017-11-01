@@ -19,6 +19,12 @@ import mo.problems.MOP.DTLZ.DTLZ4;
 import mo.problems.MOP.DTLZ.DTLZ5;
 import mo.problems.MOP.DTLZ.DTLZ6;
 import mo.problems.MOP.DTLZ.DTLZ7;
+import mo.problems.MOP.DeceptiveScaledDTLZ.DeceptiveScaledDTLZ1;
+import mo.problems.MOP.DeceptiveScaledDTLZ.DeceptiveScaledDTLZ2;
+import mo.problems.MOP.DeceptiveScaledDTLZ.DeceptiveScaledDTLZ3;
+import mo.problems.MOP.DeceptiveScaledDTLZ.DeceptiveScaledDTLZ4;
+import mo.problems.MOP.DeceptiveScaledDTLZ.DeceptiveScaledDTLZ5;
+import mo.problems.MOP.DeceptiveScaledDTLZ.DeceptiveScaledDTLZ6;
 import mo.problems.MOP.InvertedDTLZ.InvertedDTLZ1;
 import mo.problems.MOP.InvertedDTLZ.InvertedDTLZ2;
 import mo.problems.MOP.InvertedDTLZ.InvertedDTLZ3;
@@ -35,8 +41,26 @@ import mo.problems.MOP.InvertedWFG.InvertedWFG6;
 import mo.problems.MOP.InvertedWFG.InvertedWFG7;
 import mo.problems.MOP.InvertedWFG.InvertedWFG8;
 import mo.problems.MOP.InvertedWFG.InvertedWFG9;
+import mo.problems.MOP.MinusDTLZ.MinusDTLZ1;
+import mo.problems.MOP.MinusDTLZ.MinusDTLZ2;
+import mo.problems.MOP.MinusDTLZ.MinusDTLZ3;
+import mo.problems.MOP.MinusDTLZ.MinusDTLZ4;
+import mo.problems.MOP.MinusDTLZ.MinusDTLZ5;
+import mo.problems.MOP.MinusDTLZ.MinusDTLZ6;
+import mo.problems.MOP.MinusDTLZ.MinusDTLZ7;
+import mo.problems.MOP.MinusWFG.MinusWFG1;
+import mo.problems.MOP.MinusWFG.MinusWFG2;
+import mo.problems.MOP.MinusWFG.MinusWFG3;
+import mo.problems.MOP.MinusWFG.MinusWFG4;
+import mo.problems.MOP.MinusWFG.MinusWFG5;
+import mo.problems.MOP.MinusWFG.MinusWFG6;
+import mo.problems.MOP.MinusWFG.MinusWFG7;
+import mo.problems.MOP.MinusWFG.MinusWFG8;
+import mo.problems.MOP.MinusWFG.MinusWFG9;
 import mo.problems.MOP.ScaledDTLZ.ScaledDTLZ1;
 import mo.problems.MOP.ScaledDTLZ.ScaledDTLZ2;
+import mo.problems.MOP.ScaledDTLZ.ScaledDTLZ3;
+import mo.problems.MOP.ScaledDTLZ.ScaledDTLZ4;
 import mo.problems.MOP.WFG.WFG1;
 import mo.problems.MOP.WFG.WFG2;
 import mo.problems.MOP.WFG.WFG3;
@@ -243,10 +267,43 @@ public class MOPFactory {
 			return new DTLZ6(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("DTLZ7")){
 			return new DTLZ7(numberOfVariables,numberOfObj);
-		} else if (name.equalsIgnoreCase("ScaledDTLZ1")){
+		} if (name.equalsIgnoreCase("MinusDTLZ1")){
+			return new MinusDTLZ1(numberOfVariables,numberOfObj);
+		} else if (name.equalsIgnoreCase("MinusDTLZ2")){
+			return new MinusDTLZ2(numberOfVariables,numberOfObj);
+		}	else if (name.equalsIgnoreCase("MinusDTLZ3")){
+			return new MinusDTLZ3(numberOfVariables,numberOfObj);
+		}	else if (name.equalsIgnoreCase("MinusDTLZ4")){
+			return new MinusDTLZ4(numberOfVariables,numberOfObj);
+		}else if (name.equalsIgnoreCase("MinusDTLZ5")){
+			return new MinusDTLZ5(numberOfVariables,numberOfObj);
+		}else if (name.equalsIgnoreCase("MinusDTLZ6")){
+			return new MinusDTLZ6(numberOfVariables,numberOfObj);
+		}else if (name.equalsIgnoreCase("MinusDTLZ7")){
+			return new MinusDTLZ7(numberOfVariables,numberOfObj);
+		}	else if (name.equalsIgnoreCase("DeceptiveScaledDTLZ1")){
+			return new DeceptiveScaledDTLZ1(numberOfVariables,numberOfObj);
+		} else if (name.equalsIgnoreCase("DeceptiveScaledDTLZ2")){
+			return new DeceptiveScaledDTLZ2(numberOfVariables,numberOfObj);
+		}	else if (name.equalsIgnoreCase("DeceptiveScaledDTLZ3")){
+			return new DeceptiveScaledDTLZ3(numberOfVariables,numberOfObj);
+		}	else if (name.equalsIgnoreCase("DeceptiveScaledDTLZ4")){
+			return new DeceptiveScaledDTLZ4(numberOfVariables,numberOfObj);
+		}else if (name.equalsIgnoreCase("DeceptiveScaledDTLZ5")){
+			return new DeceptiveScaledDTLZ5(numberOfVariables,numberOfObj);
+		}else if (name.equalsIgnoreCase("DeceptiveScaledDTLZ6")){
+			return new DeceptiveScaledDTLZ6(numberOfVariables,numberOfObj);
+		}else if (name.equalsIgnoreCase("DeceptiveScaledDTLZ7")){
+			System.exit(1);
+			return new DTLZ7(numberOfVariables,numberOfObj);
+		}else if (name.equalsIgnoreCase("ScaledDTLZ1")){
 			return new ScaledDTLZ1(numberOfVariables,numberOfObj);
 		} else if (name.equalsIgnoreCase("ScaledDTLZ2")){
 			return new ScaledDTLZ2(numberOfVariables,numberOfObj);
+		} else if (name.equalsIgnoreCase("ScaledDTLZ3")){
+			return new ScaledDTLZ3(numberOfVariables,numberOfObj);
+		} else if (name.equalsIgnoreCase("ScaledDTLZ4")){
+			return new ScaledDTLZ4(numberOfVariables,numberOfObj);
 		}else if (name.equalsIgnoreCase("InvertedDTLZ1")){
 			return new InvertedDTLZ1(numberOfVariables,numberOfObj);
 		} else if (name.equalsIgnoreCase("InvertedDTLZ2")){
@@ -315,6 +372,24 @@ public class MOPFactory {
 			return new WFG8(k,l,M);
 		}else if (name.equalsIgnoreCase("WFG9")){
 			return new WFG9(k,l,M);
+		}else 	if (name.equalsIgnoreCase("MinusWFG1")){
+			return new MinusWFG1(k,l,M);
+		} else if (name.equalsIgnoreCase("MinusWFG2")){
+			return new MinusWFG2(k,l,M);
+		} else if (name.equalsIgnoreCase("MinusWFG3")){
+			return new MinusWFG3(k,l,M);
+		} else if (name.equalsIgnoreCase("MinusWFG4")){
+			return new MinusWFG4(k,l,M);
+		}else if (name.equalsIgnoreCase("MinusWFG5")){
+			return new MinusWFG5(k,l,M);
+		}else if (name.equalsIgnoreCase("MinusWFG6")){
+			return new MinusWFG6(k,l,M);
+		}else if (name.equalsIgnoreCase("MinusWFG7")){
+			return new MinusWFG7(k,l,M);
+		}else if (name.equalsIgnoreCase("MinusWFG8")){
+			return new MinusWFG8(k,l,M);
+		}else if (name.equalsIgnoreCase("MinusWFG9")){
+			return new MinusWFG9(k,l,M);
 		}else if (name.equalsIgnoreCase("Knapsack")){
 			return new Knapsack(parameters.getAsInt("numberOfObjectives"));
 		}
