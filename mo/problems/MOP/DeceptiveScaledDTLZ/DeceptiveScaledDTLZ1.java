@@ -83,7 +83,7 @@ public class DeceptiveScaledDTLZ1 extends Problem {
     g = 100 * (k + g);
 
     for (int i = 0; i < numberOfObjectives_; i++)
-      f[i] = (1.0 + g) * 0.5*Math.pow(10, i);
+      f[i] = (1.0 +Math.pow(10, i)* g) * 0.5;
 
     for (int i = 0; i < numberOfObjectives_; i++){
       for (int j = 0; j < numberOfObjectives_ - (i + 1); j++)

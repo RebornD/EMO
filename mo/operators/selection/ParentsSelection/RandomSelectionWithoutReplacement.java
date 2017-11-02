@@ -23,11 +23,11 @@ public class RandomSelectionWithoutReplacement extends ParentsSelection {
 		assert population.size() >1 : "population size is " + population.size();
 		int[] perm = new int[2];
 		perm[0] = Random.nextIntII(0, population.size() - 1);
-		perm[1] = Random.nextIntII(0, population.size() - 1);
+/*		perm[1] = Random.nextIntII(0, population.size() - 1);
 		while ((perm[1] == perm[0])) {
 			perm[1] = Random.nextIntII(0, population.size() - 1);
 		}
-		return perm;
+*/		return perm[0];
 	} // Execute
 
 

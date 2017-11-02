@@ -58,7 +58,7 @@ public class DeceptiveScaledDTLZ2 extends Problem {
 	      g += (x[i] - 0.5)*(x[i] - 0.5);
 
 	    for (int i = 0; i < numberOfObjectives_; i++)
-	      f[i] = (1.0 + g)*Math.pow(10, i);
+	      f[i] = (1.0 + Math.pow(10, i)*g);
 
 	    for (int i = 0; i < numberOfObjectives_; i++){
 	      for (int j = 0; j < numberOfObjectives_ - (i + 1); j++)

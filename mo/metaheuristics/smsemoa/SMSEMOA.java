@@ -7,8 +7,8 @@ import mo.core.Operator;
 import mo.core.Population;
 import mo.core.Problem;
 import mo.core.Solution;
-import mo.operators.selection.ParentsSelection.BinaryTournament;
 import mo.operators.selection.ParentsSelection.ParentsSelection;
+import mo.operators.selection.ParentsSelection.RandomSelectionWithoutReplacement;
 import mo.util.Front;
 import mo.util.JMException;
 import mo.util.POINT;
@@ -113,7 +113,7 @@ public class SMSEMOA extends Algorithm{
 		Population empty = ranking.get(ranking.getworstrank()-1);
 		int number = -1;
 
-		// you don't have to calclate the Contribution.
+		// don't have to calclate the Contribution.
 		if(empty.size() == 1){
 			number = empty.get(0).getID();
 		}  else  {
@@ -122,6 +122,7 @@ public class SMSEMOA extends Algorithm{
 				Normalaization(no);
 			}
 			double[] empt =IHyperVolume.IHV(no);
+
 			List<Integer> list = IHyperVolume.getLowestContribution(empt);
 			int d = Random.nextIntIE(list.size());
 			number = empty.get( list.get(d) ).getID();
@@ -165,14 +166,17 @@ public class SMSEMOA extends Algorithm{
 
 		double[] vvv = new double[Ideal.length];
 		for(int j=0;	j	<vvv.length;	j++){
-			vvv[j] = Math.sqrt( (Nadia[j] -Ideal[j])*(Nadia[j] -Ideal[j])) > 1.0E-10 ? Math.sqrt( (Nadia[j] -Ideal[j])*(Nadia[j] -Ideal[j])): 1.0E-10;
+			vvv[j] = Math.abs(Nadia[j] - Ideal[j]) > 1.0E-10 ?  Math.abs(Nadia[j] - Ideal[j]): 1.0E-10;
 		}
 
 		for(int i=0;i<no.size();i++){
 			POINT d = no.get(i);
 			for(int j=0;j<no.getDimension();j++){
 				double val = d.get(j);
-				d.set(j, (val - Ideal[j]) / (vvv[j]));
+				assert  vvv[j]>= 0:"False";
+				//System.out.println((d.get(j)- Ideal[j]));
+				d.set(j, (d.get(j) - Ideal[j]) / (vvv[j]));
+	//			System.out.println(d.get(j)+"	");
 			}
 		}
 	}
@@ -222,7 +226,6 @@ public class SMSEMOA extends Algorithm{
 
 
 	public void initPopulation() throws JMException, ClassNotFoundException {
-
  		for (int i = 0; i < populationSize_; i++) {
 			Solution newSolution = new Solution(problem_);
 			evaluations_++;
@@ -231,8 +234,8 @@ public class SMSEMOA extends Algorithm{
 		 	population_.add(newSolution);
 		}
 	}
-	
-	
+
+
 	public void makeNextGeneration() throws JMException {
 		Merge_ = new Population(populationSize_ + 1);
 		Merge_.merge(population_);
@@ -265,7 +268,7 @@ public class SMSEMOA extends Algorithm{
 		maxEvaluation_ = ((Integer)this.getInputParameter("maxEvaluations"));
 		population_ = new Population(populationSize_);
 
-		ParentSelection_ = new BinaryTournament(null);
+		ParentSelection_ = new RandomSelectionWithoutReplacement(null);
 		ParentSelection_.setComparator(comparator);
 		isMaxProblem_    = ((boolean)this.getInputParameter("ismax"));
 		IHyperVolume.set(isMaxProblem_);
@@ -274,6 +277,7 @@ public class SMSEMOA extends Algorithm{
 		for(int i=0;i<ref.length;i++){
 			referencePoint_[i] = ref[i];
 		}
+
 		comparator.setIs(isMaxProblem_);
 		IHyperVolume.setReferencePoint(referencePoint_);
 

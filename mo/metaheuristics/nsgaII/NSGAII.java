@@ -132,14 +132,9 @@ public class NSGAII extends Algorithm {
 
 		} while (evaluations_ < maxEvaluations_ );
 
-
-
 		population_.printVariablesToFile(directoryname + "/FinalVAR/FinalVAR" + time + ".dat");
 		population_.printObjectivesToFile(directoryname + "/FinalFUN/FinalFUN" + time + ".dat");
 		//population_.printVariablesToFile("result/config/FinalVAR" + time + ".dat");
-
-
-
 		return population_;
 	}
 

@@ -198,14 +198,30 @@ public class IHyperVolume  extends Indicator{
 		return ret;
 	}
 */
+
+
+	public static List<Integer> getLowestContribution(double[] empt) {
+		List<Integer> ret = new ArrayList<Integer>();
+
+		ret.add(0);
+			for(int i=1;i<empt.length;i++){
+			if(empt[ret.get(0)] > empt[i]){
+				ret.clear();
+				ret.add(i);
+			} else if (Math.abs(empt[i] -empt[ret.get(0)]) < 1.0E-14){
+				ret.add(i);
+			}
+		}
+		return ret;
+	}
+
+	/*
 	public static List<Integer> getLowestContribution(double [] contribution_){
-		List<Integer> listContribution_ = new ArrayList<Integer>();
+		List<Integer> ret = new ArrayList<Integer>();
 
-		listContribution_.add(0);
-		double min = contribution_[0];
+		ret.add(0);
 		for(int i=1;i<contribution_.length;i++){
-
-			if( contribution_[i] < min ){
+			if( contribution_[i] < ){
 				min = contribution_[i];
 				listContribution_.clear();
 				listContribution_.add(i);
@@ -216,7 +232,7 @@ public class IHyperVolume  extends Indicator{
 		}
 		return listContribution_;
 	}
-
+*/
 	public static void main(String[] argv){
 		System.out.println("start");
 
