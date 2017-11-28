@@ -253,12 +253,13 @@ public class NSGAII extends Algorithm {
 				if (max - min < 1.0E-14){
 					continue;
 				}
+				
 			for(int  n = 1;n < a.size() -1 ;n++){
 					Solution sp = a.get(e[n]);
 					em = sp.getCrowdDistance_();
 					em = em + (a.get(e[n + 1]).getObjective(key)  - a.get(e[n - 1]).getObjective(key))/(max - min);
 					sp.setCrowedDistance(em);
-				}
+			  }
 		}
 	//	System.out.println();
 	//	System.out.println("関数内");
