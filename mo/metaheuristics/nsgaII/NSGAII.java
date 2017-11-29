@@ -200,7 +200,6 @@ public class NSGAII extends Algorithm {
 			CrowdingDistance(ret);
 			Permutation.setPermutation(permu);
 
-
 			Sort(permu,ret);
 			int size = populationSize_ - population_.size();
 			Population d = new Population(size);
@@ -217,7 +216,7 @@ public class NSGAII extends Algorithm {
 
 			for(int i=0;i<d.size();i++){
 				population_.add(d.get(permu[i]));
-				}
+			}
 			}
 			assert population_.size()  == populationSize_ :population_.size()  + "	" + populationSize_;
 		}
