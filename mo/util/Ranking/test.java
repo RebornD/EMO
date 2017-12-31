@@ -10,6 +10,8 @@ public class test {
 
 		Solution a = new Solution(2);
 		System.out.println();
+		a.setFeasible(true);
+
 
 		a.setObjective(0, 18);
 		a.setObjective(1, 18);
@@ -77,7 +79,7 @@ public class test {
 
 
 
-		NDSRanking ranking = new NDSRanking(true);
+		C_NDSRanking ranking = new C_NDSRanking(true);
 
 		ranking.setPop(ret);
 		ranking.Ranking();

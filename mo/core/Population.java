@@ -323,7 +323,7 @@ public class Population {
 					for (int j = 0; j < NumberOfObjectives; j++){
 							bw.write(population_[i].getObjective(j) + "	");
 					}
-					bw.write(String.valueOf(population_[i].getViolation()));
+//					bw.write(String.valueOf(population_[i].getViolation()));
 					bw.newLine();
 					}
 				}

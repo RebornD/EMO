@@ -195,7 +195,9 @@ public class Solution {
 		objective_ = new double[numberOfObjective];
 		numberOfObjectives_ = numberOfObjective;
 	}
-
+	public void setFeasible(boolean d){
+		feasibleSolution_ = d;
+	}
 	int NumberOfDominatedSolution_;
 
 	public int getNumberOfDominatedSolution(){return NumberOfDominatedSolution_;};

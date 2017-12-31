@@ -12,6 +12,16 @@ import mo.problems.MOP.CDTLZ.C3_DTLZ4;
 import mo.problems.MOP.CDTLZ.CF_DTLZ3;
 import mo.problems.MOP.CDTLZ.ConvexC2_DTLZ2;
 import mo.problems.MOP.CDTLZ.ConvexDTLZ2;
+import mo.problems.MOP.CF.CF1;
+import mo.problems.MOP.CF.CF10;
+import mo.problems.MOP.CF.CF2;
+import mo.problems.MOP.CF.CF3;
+import mo.problems.MOP.CF.CF4;
+import mo.problems.MOP.CF.CF5;
+import mo.problems.MOP.CF.CF6;
+import mo.problems.MOP.CF.CF7;
+import mo.problems.MOP.CF.CF8;
+import mo.problems.MOP.CF.CF9;
 import mo.problems.MOP.DTLZ.DTLZ1;
 import mo.problems.MOP.DTLZ.DTLZ2;
 import mo.problems.MOP.DTLZ.DTLZ3;
@@ -233,6 +243,8 @@ public class MOPFactory {
 		} else if (name.contains("DTLZ")){
 			int distanceVaribales = parameters.getAsInt("dtlzD");
 			numberOfVariables = distanceVaribales + numberOfObj -1;
+		} else if (name.contains("CF")){
+			numberOfVariables = 10;
 		}
 
 
@@ -392,6 +404,26 @@ public class MOPFactory {
 			return new MinusWFG9(k,l,M);
 		}else if (name.equalsIgnoreCase("Knapsack")){
 			return new Knapsack(parameters.getAsInt("numberOfObjectives"));
+		} else 	if (name.equalsIgnoreCase("CF1")){
+			return new CF1(numberOfVariables,numberOfObj);
+		}else 	if (name.equalsIgnoreCase("CF2")){
+			return new CF2(numberOfVariables,numberOfObj);
+		}else 	if (name.equalsIgnoreCase("CF3")){
+			return new CF3(numberOfVariables,numberOfObj);
+		}else 	if (name.equalsIgnoreCase("CF4")){
+			return new CF4(numberOfVariables,numberOfObj);
+		}else 	if (name.equalsIgnoreCase("CF5")){
+			return new CF5(numberOfVariables,numberOfObj);
+		}else 	if (name.equalsIgnoreCase("CF6")){
+			return new CF6(numberOfVariables,numberOfObj);
+		}else 	if (name.equalsIgnoreCase("CF7")){
+			return new CF7(numberOfVariables,numberOfObj);
+		}else 	if (name.equalsIgnoreCase("CF8")){
+			return new CF8(numberOfVariables,numberOfObj);
+		}else 	if (name.equalsIgnoreCase("CF9")){
+			return new CF9(numberOfVariables,numberOfObj);
+		}else 	if (name.equalsIgnoreCase("CF10")){
+			return new CF10(numberOfVariables,numberOfObj);
 		}
 /*		else if (name.equalsIgnoreCase("SinglePointCrossover"))
 			return new SinglePointCrossover(parameters);

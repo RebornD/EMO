@@ -22,6 +22,10 @@ public class AlgorithmMainFactory {
 			return new ParallelSMSEMOAIGDMain(parameters);
 		} else if (name.equalsIgnoreCase("ParallelSMSEMOA")){
 			return new ParallelSMSEMOAMain(parameters);
+		}else if (name.equalsIgnoreCase("MOEADCDP")){
+			return new MOEAD_CDPMain(parameters);
+		}else if (name.equalsIgnoreCase("NSGAIICDP")){
+			return new NSGAIICDP_Main(parameters);
 		}/*
 		  else if (name.equalsIgnoreCase("SBXCrossover2")){
 			return new SBXCrossover2(parameters);
