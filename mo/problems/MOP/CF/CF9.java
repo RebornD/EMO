@@ -87,14 +87,14 @@ public class CF9 extends Problem {
 		f[0] = Math.cos(0.5*Math.PI*x[0])*Math.cos(0.5*Math.PI*x[1]) + 2.0*sum1 / (double)count1;
 		f[1] = Math.cos(0.5*Math.PI*x[0])*Math.sin(0.5*Math.PI*x[1]) + 2.0*sum2 / (double)count2;
 		f[2] = Math.sin(0.5*Math.PI*x[0]) + 2.0*sum3 / (double)count3;
-		c[0] = (f[0] * f[0] + f[1] * f[1]) / (1 - f[2] * f[2]) - a*Math.abs(Math.sin(N*Math.PI*((f[0] * f[0] - f[1] * f[1]) / (1 - f[2] * f[2]) + 1.0))) - 1.0;
+		c[0] = (f[0] * f[0] + f[1] * f[1]) / (1 - f[2] * f[2]) - a*(Math.sin(N*Math.PI*((f[0] * f[0] - f[1] * f[1]) / (1 - f[2] * f[2]) + 1.0))) - 1.0;
 
 
 	    for (int i = 0; i < numberOfObjectives_; i++)
 	      solution.setObjective(i,f[i]);
 
-	    solution.setConstrain(0, c[0]  <= 0.0 ? -1*c[0] : 0.0 );
-	    solution.setConstrain(0, c[1]  <= 0.0 ? -1*c[1] : 0.0 );
+	    solution.setConstrain(0, c[0]  > 0.0 ? 0.0 : -1*c[0] );
+	 //   solution.setConstrain(0, c[1]  > 0.0 ? 0.0 : -1*c[1] );
 
 	    solution.calctotalCalc();
   }

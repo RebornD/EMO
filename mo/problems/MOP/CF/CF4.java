@@ -87,7 +87,10 @@ public class CF4 extends Problem {
 	    for (int i = 0; i < numberOfObjectives_; i++)
 	      solution.setObjective(i,f[i]);
 
-	    solution.setConstrain(0, c[0]  <= 0.0 ? -1*c[0] : 0.0 );
+
+
+	    solution.setConstrain(0, c[0]  > 0.0 ? 0.0 : -1*c[0] );
+
 	    solution.calctotalCalc();
   }
   public double MYSIGN(double x){

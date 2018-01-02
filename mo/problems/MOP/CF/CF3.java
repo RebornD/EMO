@@ -44,7 +44,7 @@ public class CF3 extends Problem {
     lowerLimit_[0] = 0.0;
     upperLimit_[0] = 1.0;
 
-    	variableType_  = 2 ;
+    variableType_  = 2 ;
 
   }
   public void evaluate(Solution solution) throws JMException {
@@ -94,7 +94,9 @@ public class CF3 extends Problem {
 	    for (int i = 0; i < numberOfObjectives_; i++)
 	      solution.setObjective(i,f[i]);
 
-	    solution.setConstrain(0, c[0]  <= 0.0 ? -1*c[0] : 0.0 );
+	    solution.setConstrain(0, c[0]  > 0.0 ? 0.0 : -1*c[0] );
+
+
 	    solution.calctotalCalc();
   }
   public double MYSIGN(double x){

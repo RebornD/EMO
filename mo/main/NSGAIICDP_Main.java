@@ -8,7 +8,7 @@ import experiments.Setting;
 import mo.core.AlgorithmMain;
 import mo.core.Operator;
 import mo.core.Problem;
-import mo.metaheuristics.nsgaII.NSGAII;
+import mo.metaheuristics.NSGAII_CDP.NSGAII_CDP;
 import mo.operators.crossover.CrossoverFactory;
 import mo.operators.mutation.MutationFactory;
 import mo.problems.MOP.MOPFactory;
@@ -38,12 +38,14 @@ public class NSGAIICDP_Main extends AlgorithmMain{
 		HashMap d = new HashMap();
 		d.put("numberOfObjectives",OBJ);
 		problem = MOPFactory.getMOP(Problemname,setting_,"NSGAII_CDP");
-		algorithm = new NSGAII(problem);
+		algorithm = new NSGAII_CDP(problem);
 		String dddname = problem.getNumberOfObjectives()  + "OBJ";
 		algorithm.setInputParameter("populationSize", setting_.getAsInt("populationSize"));
 
 		DirectoryName = "result/NSGAII_CDP/" + Problemname+"/"+dddname;
 		algorithm.setInputParameter("DirectoryName",  DirectoryName);
+
+
 
 		algorithm.setInputParameter("maxEvaluations", setting_.getAsInt("maxEvaluations"));
 		algorithm.setInputParameter("numberOfParents", 2);

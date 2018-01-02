@@ -68,11 +68,9 @@ public class C_NDSRanking {
 
 	int CompareTwoSolution_NDS(Solution one, Solution two, boolean isMAX_) {
 	if (!one.getFeasible() && two.getFeasible()) {
-		assert false;
 		return -1;
 	}
 	else if (one.getFeasible() && !two.getFeasible()) {
-		assert false;
 
 		return 1;
 	}
@@ -85,7 +83,6 @@ public class C_NDSRanking {
 			e.printStackTrace();
 		}
 	} else if (!one.getFeasible() && !two.getFeasible()){
-		assert false;
 
 		if (one.getViolation() > two.getViolation()) {
 			return -1;

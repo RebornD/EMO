@@ -93,6 +93,8 @@ public class MOEADCDP extends Algorithm {
 	int sizeOfNeiborhoodRepleaced_;
 	int sizeOfMatingNeiborhood_;
 
+	int numberOfReplacedTimes_;
+	double matingNeighborhoodPropability_;
 	/**
 	 * Constructor
 	 *
@@ -277,6 +279,7 @@ public class MOEADCDP extends Algorithm {
 		a.setNeiborhood(Math.max(sizeOfNeiborhoodRepleaced_,sizeOfMatingNeiborhood_));
 		neighborhood_ = a.getNeiborhood();
 		WeightedVector_       = a.getWeight();
+		populationSize_ = WeightedVector_.length;
 	}
 
 	public void subscript() {
@@ -323,10 +326,15 @@ public class MOEADCDP extends Algorithm {
 //		System.out.println(sizeOfMatingNeiborhood_ + " 	");
 		while (list.size() < size) {
 
+			if(Random.nextDoubleIE()<0.9){
 				r = Random.nextIntIE(ss);
 				p = neighborhood_[cid][r];
 
 				// p = population[cid].table[r];
+			} else {
+				p = Random.nextIntIE(populationSize_);
+//				list.addElement(r);
+			}
 			flag = true;
 			for (int i = 0; i < list.size(); i++) {
 				if (list.get(i) == p) // p is in the list
@@ -338,6 +346,7 @@ public class MOEADCDP extends Algorithm {
 			if (flag) {
 				list.addElement(p);
 			}
+
 		}
 	}
 
@@ -374,16 +383,22 @@ public class MOEADCDP extends Algorithm {
 
 		// generate teh random permutation.
 		Permutation.randomPermutation(perm, size);
+		int counter = 0;
+
 
 
 		for (int i = 0; i < size; i++) {
 			int k;
+			if(counter==2){
+				break;
+			}
 			k = neighborhood_[id][perm[i]];
 			comparator.setWeightedVector(WeightedVector_[k]);
 			comparator.setRefernecePoint(ReferencePoint_);
 
 			if (comparator.execute(indiv, population_.get(k)) == 1) {
 				population_.replace(k, (indiv));
+				counter++;
 			}
 		}
 
@@ -412,6 +427,8 @@ public class MOEADCDP extends Algorithm {
 		InnerWeightVectorDivision_ = ((Integer)this.getInputParameter("InnerWeightDivision"));
 		isInnerWeightVector_ = ((InnerWeightVectorDivision_ > 0));
 		populationSize_ = Calculator.conbination(numberofObjectives_-1 + numberOfDivision_ ,numberofObjectives_-1);
+		numberOfReplacedTimes_ = ((Integer)this.getInputParameter("numberOfReplacedTimes"));
+		matingNeighborhoodPropability_ = ((Integer)this.getInputParameter("MNP"));
 
 	//	outNormal_ = ((boolean) this.getInputParameter("outputNormal"));
 

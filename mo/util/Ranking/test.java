@@ -15,66 +15,129 @@ public class test {
 
 		a.setObjective(0, 18);
 		a.setObjective(1, 18);
+		a.setConstrain(0, 1);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0, 18);
 		a.setObjective(1, 18);
+		a.setConstrain(0, 2);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0, 12);
 		a.setObjective(1, 18);
+
+		a.setConstrain(0, 3);
+		a.calctotalCalc();
 		ret.add(new Solution(a));
 		a.setObjective(0, 16);
 		a.setObjective(1, 16);
+		a.setConstrain(0, 0.5);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0, 18);
 		a.setObjective(1, 12);
+		a.setConstrain(0, 0.5);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,10);
 		a.setObjective(1, 16);
+		a.setConstrain(0, 6);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,14 );
 		a.setObjective(1, 14);
+		a.setConstrain(0, 0.5);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,15 );
 		a.setObjective(1, 9);
+		a.setConstrain(0, 0.5);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,18 );
 		a.setObjective(1, 6);
+		a.setConstrain(0, 9);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,4 );
 		a.setObjective(1, 14);
+		a.setConstrain(0, 10);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,9 );
 		a.setObjective(1, 13);
+		a.setConstrain(0, 11);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,12 );
 		a.setObjective(1, 11);
+		a.setConstrain(0, 12);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,16 );
 		a.setObjective(1, 4);
+		a.setConstrain(0, 13);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,2 );
 		a.setObjective(1, 12);
+		a.setConstrain(0, 14);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,8 );
 		a.setObjective(1, 10);
+		a.setConstrain(0, 15);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,12 );
 		a.setObjective(1, 8);
+		a.setConstrain(0, 16);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,14 );
 		a.setObjective(1, 4);
+		a.setConstrain(0, 17);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,16 );
 		a.setObjective(1, 0);
+		a.setConstrain(0, 0);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,2 );
 		a.setObjective(1, 8);
+		a.setConstrain(0, 0);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0, 6 );
 		a.setObjective(1, 6);
+		a.setConstrain(0, 20);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 		a.setObjective(0,10 );
 		a.setObjective(1, 2);
+		a.setConstrain(0, 21);
+		a.calctotalCalc();
+
 		ret.add(new Solution(a));
 
 

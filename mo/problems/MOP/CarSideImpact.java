@@ -68,11 +68,11 @@ public class CarSideImpact extends Problem{
 		f[2] = 0.5*(constrain[8] + constrain[9]);
 
 		for( int i = 0 ;i < sol.getNumberOfObjectives();i++){
-			sol.setValue(i, f[i]);
+//			sol.setValue(i, f[i]);
 		}
 
 		for( int i = 0 ;i < sol.getNumberOfConstraint();i++){
-			sol.setValue(i, f[i]);
+	//		sol.setValue(i, f[i]);
 		}
 
 

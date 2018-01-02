@@ -52,7 +52,6 @@ public class Setting{
 			S  = line.split(DEMILITER);
 			System.out.print(S[0] + " " + S[1] + "\n");
 			add(S[0],S[1]);
-
 		}
 
 		} catch (IOException e){

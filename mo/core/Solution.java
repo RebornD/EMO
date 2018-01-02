@@ -194,6 +194,9 @@ public class Solution {
 	public Solution(int numberOfObjective){
 		objective_ = new double[numberOfObjective];
 		numberOfObjectives_ = numberOfObjective;
+		constrain_ = new double[numberOfObjective];
+		numberOfConstrain_ = numberOfObjective;
+
 	}
 	public void setFeasible(boolean d){
 		feasibleSolution_ = d;

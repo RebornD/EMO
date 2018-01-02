@@ -56,10 +56,10 @@ public class CF1 extends Problem {
 		int count1 = 0, count2 = 0;
 		double yj;
 		double N = 10.0, a = 1.0;
+
 		for(int i = 0;i < x.length;i++){
 			x[i] = solution.getValue(i);
 		}
-
 
 		for (int j = 2; j <= numberOfVariables_; j++)
 		{
@@ -83,8 +83,10 @@ public class CF1 extends Problem {
 	    for (int i = 0; i < numberOfObjectives_; i++)
 	      solution.setObjective(i,f[i]);
 
-	    solution.setConstrain(0, c[0]  <= 0.0 ? -1*c[0] : 0.0 );
+
+	    solution.setConstrain(0, c[0]  > 0.0 ? 0.0 : -1*c[0] );
 	    solution.calctotalCalc();
+
   }
 
   @Override

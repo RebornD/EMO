@@ -97,9 +97,8 @@ public class CF10 extends Problem {
 		c[0] = (f[0] * f[0] + f[1] * f[1]) / (1 - f[2] * f[2]) - a*Math.sin(N*Math.PI*((f[0] * f[0] - f[1] * f[1]) / (1 - f[2] * f[2]) + 1.0)) - 1.0;
 	    for (int i = 0; i < numberOfObjectives_; i++)
 	      solution.setObjective(i,f[i]);
-
-	    solution.setConstrain(0, c[0]  <= 0.0 ? -1*c[0] : 0.0 );
-	    solution.setConstrain(0, c[1]  <= 0.0 ? -1*c[1] : 0.0 );
+//	    System.out.println(x);
+	    solution.setConstrain(0, c[0]  > 0.0 ? 0.0 : -1*c[0] );
 
 	    solution.calctotalCalc();
   }
