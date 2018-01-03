@@ -400,7 +400,7 @@ public class NSGAIII extends Algorithm{
 		populationSize_ = ((Integer)this.getInputParameter("populationSize"));
 		crossover_ = operators_.get("crossover"); // default: DE crossover
 		mutation_ = operators_.get("mutation"); // default: polynomial mutation
-		outNormal_ = ((boolean) this.getInputParameter("outputNormal"));
+	//	outNormal_ = ((boolean) this.getInputParameter("outputNormal"));
 
 		InnerWeightVectorDivision_ = ((Integer)this.getInputParameter("InnerWeightDivision"));
 		isInnerWeightVector_ = ((InnerWeightVectorDivision_ > 0));

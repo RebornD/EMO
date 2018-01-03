@@ -60,7 +60,7 @@ public class start {
 	private double MutationDistribution = -1;
 	@Option(name="-rep", aliases= "--repeat time", required=false, metaVar="<Repeat time>", usage="Specify the the Iteration")
 	private int reps = -1;
-	@Option(name="-div", aliases= "--Division", required=false, metaVar="<Division>", usage="Specify the division in MOEA/D or NSGAIII")
+	@Option(name="-div", aliases= "--Division", required=false, metaVar="<Division>", usage="Specify the division in MOEA/D or NSGAIII_YY")
 	private int  Division = -1;
 	@Option(name="-indiv", aliases= "--Innerdivision", required=false, metaVar="<InnerDivision>", usage="Specify the inner division in MOEA/D or NSGA-III")
 	private int InnerDivision = -1;

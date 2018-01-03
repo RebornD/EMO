@@ -8,15 +8,15 @@ import experiments.Setting;
 import mo.core.AlgorithmMain;
 import mo.core.Operator;
 import mo.core.Problem;
-import mo.metaheuristics.NSGAIII.NSGAIII;
+import mo.metaheuristics.NSGAIII_YY.NSGAIII_YY;
 import mo.operators.crossover.CrossoverFactory;
 import mo.operators.mutation.MutationFactory;
 import mo.problems.MOP.MOPFactory;
 import mo.util.JMException;
 
-public class NSGAIIIMain extends AlgorithmMain{
+public class NSGAIII_YY_main extends AlgorithmMain{
 
-	public NSGAIIIMain(Setting test) {
+	public NSGAIII_YY_main(Setting test) {
 		super(test);
 	}
 
@@ -36,7 +36,7 @@ public class NSGAIIIMain extends AlgorithmMain{
 		HashMap d = new HashMap();
 		d.put("numberOfObjectives",OBJ);
 		problem = MOPFactory.getMOP(Problemname,setting_,"NSGAIII_YY");
-		algorithm = new NSGAIII(problem);
+		algorithm = new NSGAIII_YY(problem);
 
 
 		String dddname = problem.getNumberOfObjectives()  + "OBJ" + setting_.getAsInt("Division") +"div";
@@ -83,7 +83,7 @@ public class NSGAIIIMain extends AlgorithmMain{
 
 		algorithm.setInputParameter("ismax", setting_.getAsBool("IsMax"));
 		algorithm.setInputParameter("IsNorm", setting_.getAsBool("IsNorm"));
-		//algorithm.setInputParameter("outputNormal",setting_.getAsBool("outputNormal"));
+		algorithm.setInputParameter("outputNormal",setting_.getAsBool("outputNormal"));
 		algorithm.addOperator("crossover", crossover);
 		algorithm.addOperator("mutation", mutation);
 

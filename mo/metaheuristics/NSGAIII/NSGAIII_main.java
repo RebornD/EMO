@@ -107,7 +107,7 @@ public class NSGAIII_main {
 
 	//　arg1 = Scalarfunctionname, arg2 = Problem Name, arg3 =
 	public static void main(String[] args) throws JMException, SecurityException, IOException, ClassNotFoundException {
-		experiment_setting("setting/NSGAIII.st");
+		experiment_setting("setting/NSGAIII_YY.st");
 		String empty;
 
 		int NumberOfRun;
@@ -140,7 +140,7 @@ public class NSGAIII_main {
 		HashMap d = new HashMap();
 
 		d.put("numberOfObjectives",numberOfObj);
-	//	problem = MOPFactory.getMOP(Problemname,d,"NSGAIII");
+	//	problem = MOPFactory.getMOP(Problemname,d,"NSGAIII_YY");
 
 		algorithm = new NSGAIII(problem);
 
@@ -153,26 +153,26 @@ public class NSGAIII_main {
 		String expro =   nobk+"OBJ" + nod  + "div"  ;
 		File newDir = new File("result");
 		newDir.mkdir();
-		newDir = new File("result/NSGAIII");
+		newDir = new File("result/NSGAIII_YY");
 		newDir.mkdir();
-		newDir = new File("result/NSGAIII/" + problemname);
+		newDir = new File("result/NSGAIII_YY/" + problemname);
 		newDir.mkdir();
-		newDir = new File("result/NSGAIII/" + problemname + "/" +expro);
+		newDir = new File("result/NSGAIII_YY/" + problemname + "/" +expro);
 		newDir.mkdir();
-		newDir = new File("result/NSGAIII/" + problemname + "/" +expro +"/");
+		newDir = new File("result/NSGAIII_YY/" + problemname + "/" +expro +"/");
 		newDir.mkdir();
-		algorithm.setInputParameter("directoryname",  "result/NSGAIII/" + problemname + "/" +expro +"/");
-		newDir = new File("result/NSGAIII/" + problemname + "/" +expro +"/" + "/FinalFUN");
+		algorithm.setInputParameter("directoryname",  "result/NSGAIII_YY/" + problemname + "/" +expro +"/");
+		newDir = new File("result/NSGAIII_YY/" + problemname + "/" +expro +"/" + "/FinalFUN");
 		newDir.mkdir();
-		newDir = new File("result/NSGAIII/" + problemname + "/" +expro  +"/" + "/InitialFUN");
+		newDir = new File("result/NSGAIII_YY/" + problemname + "/" +expro  +"/" + "/InitialFUN");
 		newDir.mkdir();
-		newDir = new File("result/NSGAIII/" + problemname + "/" +expro +"/"  + "/InitialVAR");
+		newDir = new File("result/NSGAIII_YY/" + problemname + "/" +expro +"/"  + "/InitialVAR");
 		newDir.mkdir();
-		newDir = new File("result/NSGAIII/" + problemname + "/" +expro+"/"  + "/FinalVAR");
+		newDir = new File("result/NSGAIII_YY/" + problemname + "/" +expro+"/"  + "/FinalVAR");
 		newDir.mkdir();
 
-		algorithm.setInputParameter("DirectoryName", "result/NSGAIII/" + problemname + "/" +expro);
-		String directory = "result/NSGAIII/" + problemname + "/" +expro  + "/" + "Setting";
+		algorithm.setInputParameter("DirectoryName", "result/NSGAIII_YY/" + problemname + "/" +expro);
+		String directory = "result/NSGAIII_YY/" + problemname + "/" +expro  + "/" + "Setting";
 
 		newDir = new File(directory);
 		newDir.mkdir();
@@ -292,11 +292,11 @@ public class NSGAIII_main {
 			counter++;
 
 			algorithm.setInputParameter("times", counter);
-			System.out.println("NSGAIII:"+ counter + "回目開始");
+			System.out.println("NSGAIII_YY:"+ counter + "回目開始");
 			long initTime_ = System.currentTimeMillis();
 			algorithm.execute();
 			long estimatedTime_ = System.currentTimeMillis() - initTime_;
-			System.out.println("NSGAIII:"+ counter + "回目終了	" +estimatedTime_ + "ms" );
+			System.out.println("NSGAIII_YY:"+ counter + "回目終了	" +estimatedTime_ + "ms" );
 
 		} while(counter<NumberOfRun);
 

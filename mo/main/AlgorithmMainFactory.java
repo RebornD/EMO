@@ -12,7 +12,7 @@ public class AlgorithmMainFactory {
 			return new SMSEMOAMain(parameters);
 		} else if (name.equalsIgnoreCase("MOEAD")){
 			return new MOEADMain(parameters);
-		} else if (name.equalsIgnoreCase("NSGAIII")){
+		} else if (name.equalsIgnoreCase("NSGAIII_YY")){
 			return new NSGAIIIMain(parameters);
 		} else if (name.equalsIgnoreCase("SMSEMOAIGD")){
 			return new SMSEMOAIGDMain(parameters);
@@ -25,6 +25,8 @@ public class AlgorithmMainFactory {
 		}else if (name.equalsIgnoreCase("MOEADCDP")){
 			return new MOEAD_CDPMain(parameters);
 		}else if (name.equalsIgnoreCase("NSGAIICDP")){
+			return new NSGAIICDP_Main(parameters);
+		}else if (name.equalsIgnoreCase("NSGAIII_YY_main")){
 			return new NSGAIICDP_Main(parameters);
 		}/*
 		  else if (name.equalsIgnoreCase("SBXCrossover2")){

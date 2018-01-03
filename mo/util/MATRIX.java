@@ -1,7 +1,7 @@
 package mo.util;
 
 /*
- * this class is for the NSGAIII
+ * this class is for the NSGAIII_YY
  *逆行列は計算できるけど，制度が良くないため，変更する必要ありかも，
  *doubloe型の行列ではなく，分数型の行列の方が精度がいいかもしれないため，検討するべきかも
  *
