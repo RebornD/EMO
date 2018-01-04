@@ -19,9 +19,11 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package mo.metaheuristics.nsgaII;
+package mo.metaheuristics.SpeedUpNSGAII;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import mo.core.Algorithm;
 import mo.core.Operator;
@@ -32,6 +34,7 @@ import mo.operators.selection.ParentsSelection.BinaryTournament;
 import mo.operators.selection.ParentsSelection.ParentsSelection;
 import mo.util.JMException;
 import mo.util.Permutation;
+import mo.util.fileSubscription;
 import mo.util.Comparator.NSGAIIComparator.NSGAIIComparator;
 import mo.util.Comparator.NSGAIIComparator.NSGAIIComparatorBinary;
 import mo.util.Comparator.NSGAIIComparator.NSGAIIComparatorDominance;
@@ -39,7 +42,7 @@ import mo.util.Comparator.NSGAIIComparator.NSGAIIComparatorNextGen;
 import mo.util.Ranking.NDSRanking;
 
 
-public class NSGAII extends Algorithm {
+public class SpeedUpNSGAII extends Algorithm {
 
 	/**
 	 * Stores the population size
@@ -55,7 +58,7 @@ public class NSGAII extends Algorithm {
 	private Population  merge_;
 
 	private int generation;
-
+	private List<double[] > histrory;
 
 	int evaluations_;
 
@@ -70,7 +73,7 @@ public class NSGAII extends Algorithm {
 
 	HashMap parameters;
 
-	public NSGAII(Problem problem) {
+	public  SpeedUpNSGAII(Problem problem) {
 		super(problem);
 	} // DMOEA
 
@@ -119,8 +122,13 @@ public class NSGAII extends Algorithm {
 		for(int i=0;i<ranking.getworstrank();i++){
 			CrowdingDistance(ranking.get(i));
 		}
+		histrory = new ArrayList<double[]>();
 		ranking = null;
-
+		int counter=1;
+		double[] temp = new double[2];
+		temp[0] = counter;
+		temp[1] = DistancefromOrigin(population_);
+		histrory.add(temp.clone());
 		do {
 			makeNextGeneration();
 
@@ -129,13 +137,34 @@ public class NSGAII extends Algorithm {
 			merge_.merge((offSpring_));
 
 			GotoNextGeneration();
-
+			temp[0] = ++counter;
+			temp[1] = DistancefromOrigin(population_);
+			histrory.add(temp.clone());
 		} while (evaluations_ < maxEvaluations_ );
 
 		population_.printVariablesToFile(directoryname + "/FinalVAR/FinalVAR" + time + ".dat");
 		population_.printObjectivesToFile(directoryname + "/FinalFUN/FinalFUN" + time + ".dat");
+		fileSubscription.printToFile(directoryname + "/other/data" + time + ".dat",histrory);
 		//population_.printVariablesToFile("result/config/FinalVAR" + time + ".dat");
 		return population_;
+	}
+
+	public double DistancefromOrigin(Population d){
+		double ret = Double.MAX_VALUE;
+
+		for(int p = 0; p < d.size();p++){
+			double[] Objective = d.get(p).getObjectives();
+			double tempsum = 0.0;
+			for(int o = 0;  o < Objective.length ; o++){
+				tempsum = Objective[o]*Objective[o];
+			}
+
+			tempsum = Math.sqrt(tempsum);
+			ret = Double.min(ret, tempsum);
+		}
+
+		return ret;
+
 	}
 
 

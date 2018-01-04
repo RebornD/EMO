@@ -26,6 +26,8 @@ public class AlgorithmMainFactory {
 			return new MOEAD_CDPMain(parameters);
 		}else if (name.equalsIgnoreCase("NSGAIICDP")){
 			return new NSGAIICDP_Main(parameters);
+		}else if (name.equalsIgnoreCase("SpeedUpNSGAII")){
+			return new SpeedUp_NSGAIIMain(parameters);
 		}else if (name.equalsIgnoreCase("NSGAIII_YY_main")){
 			return new NSGAIICDP_Main(parameters);
 		}/*

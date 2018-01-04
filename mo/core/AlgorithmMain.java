@@ -26,6 +26,9 @@ public abstract class AlgorithmMain implements Runnable{
 		DirectoryMaker.Make(name + "/" + "InitialFUN");
 		DirectoryMaker.Make(name + "/" + "InitialVAR");
 		DirectoryMaker.Make(name + "/" + "Setting");
+		DirectoryMaker.Make(name + "/" + "Other");
+		
+		
 	}
 
 	public final void write(){
