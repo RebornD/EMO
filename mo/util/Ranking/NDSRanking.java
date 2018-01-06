@@ -126,7 +126,7 @@ public class NDSRanking {
 		// pop.sortObjectiveusingID(0);
 		object.clear();
 		Population eee = new Population(pop.size());
-		pop.get(0).setRank(1);
+		pop.get(perm[0]).setRank(1);
 		eee.add(pop.get(perm[0]));
 
 		object.add(eee);
