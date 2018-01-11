@@ -57,7 +57,10 @@ public class DTLZ2 extends Problem {
 	    for (int i = numberOfVariables_ - k; i < numberOfVariables_; i++)
 	      g += (x[i] - 0.5)*(x[i] - 0.5);
 
-	    for (int i = 0; i < numberOfObjectives_; i++)
+	    for (int i = 0; i < numberOfVariables_; i++)
+		      x[i] = solution.getValue(i);
+
+		    for (int i = 0; i < numberOfObjectives_; i++)
 	      f[i] = 1.0 + g;
 
 	    for (int i = 0; i < numberOfObjectives_; i++){
