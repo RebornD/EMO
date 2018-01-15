@@ -92,7 +92,7 @@ public class MOEAD_CDPMain extends AlgorithmMain{
 		System.out.println();
 		System.out.println(DirectoryName);
 		algorithm.setInputParameter("numberOfReplacedTimes", setting_.getAsInt("numberOfReplacedTimes"));
-		algorithm.setInputParameter("MNP", setting_.getAsInt("matingNeighborhoodPropability"));
+		algorithm.setInputParameter("MNP", setting_.getAsDouble("matingNeighborhoodPropability"));
 
 		algorithm.setInputParameter("Norm",setting_.getAsBool("IsNorm"));
 		algorithm.setInputParameter("maxEvaluations", setting_.getAsInt("maxEvaluations"));

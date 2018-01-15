@@ -22,6 +22,7 @@ import mo.problems.MOP.CF.CF6;
 import mo.problems.MOP.CF.CF7;
 import mo.problems.MOP.CF.CF8;
 import mo.problems.MOP.CF.CF9;
+import mo.problems.MOP.CTP.CTP1;
 import mo.problems.MOP.DTLZ.DTLZ1;
 import mo.problems.MOP.DTLZ.DTLZ2;
 import mo.problems.MOP.DTLZ.DTLZ3;
@@ -384,6 +385,8 @@ public class MOPFactory {
 			return new WFG8(k,l,M);
 		}else if (name.equalsIgnoreCase("WFG9")){
 			return new WFG9(k,l,M);
+		}else if (name.equalsIgnoreCase("CTP1")){
+			return new CTP1(k,l);
 		}else 	if (name.equalsIgnoreCase("MinusWFG1")){
 			return new MinusWFG1(k,l,M);
 		} else if (name.equalsIgnoreCase("MinusWFG2")){

@@ -128,7 +128,7 @@ public class MOEADCDP extends Algorithm {
 
 
 		population_.printVariablesToFile(directoryname + "/InitialVAR/InitialVAR" + time + ".dat");
-		population_.printObjectivesToFile(directoryname +  "/InitialFUN/InitialFUN" + time + ".dat");
+		population_.printFeasibleObjectivesToFile(directoryname +  "/InitialFUN/InitialFUN" + time + ".dat");
 
 		int[] permutation = new int[populationSize_];
 		Permutation.randomPermutation(permutation,populationSize_);
@@ -428,7 +428,7 @@ public class MOEADCDP extends Algorithm {
 		isInnerWeightVector_ = ((InnerWeightVectorDivision_ > 0));
 		populationSize_ = Calculator.conbination(numberofObjectives_-1 + numberOfDivision_ ,numberofObjectives_-1);
 		numberOfReplacedTimes_ = ((Integer)this.getInputParameter("numberOfReplacedTimes"));
-		matingNeighborhoodPropability_ = ((Integer)this.getInputParameter("MNP"));
+		matingNeighborhoodPropability_ = ((Double)this.getInputParameter("MNP"));
 
 	//	outNormal_ = ((boolean) this.getInputParameter("outputNormal"));
 
