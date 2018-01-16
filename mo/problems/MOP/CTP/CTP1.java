@@ -51,7 +51,7 @@ public class CTP1 extends Problem {
 	    double [] x = new double[numberOfVariables_];
 	    double [] f = new double[numberOfObjectives_];
 	    double [] c = new double[numberOfConstraint_];
-	    int k = numberOfVariables_ - numberOfObjectives_ + 1;
+//	    int k = numberOfVariables_ - numberOfObjectives_ + 1;
 
 		for(int i = 0;i < x.length;i++){
 			x[i] = solution.getValue(i);
@@ -64,6 +64,7 @@ public class CTP1 extends Problem {
 
 		f[0] = x[0];
 		f[1] = g*(Math.exp(-1*x[0]/g));
+
 		c[0] = f[1] - 0.858*Math.exp(-0.541*f[0]);
 		c[1] = f[1] - 0.728*Math.exp(-0.295*f[0]);
 
@@ -72,7 +73,7 @@ public class CTP1 extends Problem {
 
 
 	    solution.setConstrain(0, c[0]  > 0.0 ? 0.0 : -1*c[0] );
-	    solution.setConstrain(0, c[1]  > 0.0 ? 0.0 : -1*c[1] );
+	    solution.setConstrain(1, c[1]  > 0.0 ? 0.0 : -1*c[1] );
 
 	    solution.calctotalCalc();
 
